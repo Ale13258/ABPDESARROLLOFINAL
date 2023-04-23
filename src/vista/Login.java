@@ -1,12 +1,24 @@
-
 package vista;
 
+import com.google.gson.Gson;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import 
 
-
+import model.Usuario;
 public class Login extends javax.swing.JFrame {
 
-   
     public Login() {
         initComponents();
     }
@@ -143,147 +155,73 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      registro newframe =new registro();
-      newframe.setVisible(true);
-      this.dispose();
+        registro newframe = new registro();
+        newframe.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      
-        
-        
+
         String name = jTextField1.getText();
         char[] pass = jPasswordField1.getPassword();
         if ("test".equals(name) || "1234".equals(pass.toString())) {
             JOptionPane.showMessageDialog(this, "Bienvenido");
-           
 
         } else {
             JOptionPane.showMessageDialog(this, "Esta es una prueba para el botón ingresar, mientras resolvemos el problema échale un vistazo al menú");
-               opciones newframe = new opciones();
+            opciones newframe = new opciones();
             newframe.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-       
-//    public JSONArray ArrayJson(String key) {
-//        JSONArray array = null;
-//        try {
-//            JSONParser Parser = new JSONParser();
-//            InputStream resourceStream = this.getClass().getResourceAsStream("/TxtJson/prueba.txt");
-//            BufferedReader archivo = new BufferedReader(new InputStreamReader(resourceStream, "UTF-8"));
-//            JSONObject pJsonObj = (JSONObject) Parser.parse(archivo);
-//            array = (JSONArray) pJsonObj.get(key);
-//        } catch (FileNotFoundException ex) {
-//            System.out.println("Archivo no encontrado");
-//        } catch (UnsupportedEncodingException ex) {
-//            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException | org.json.simple.parser.ParseException ex) {
-//            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return array;
-//    }
-    
-//    public void Escribir() throws IOException {
-//
-////        JSONArray array = ArrayJson("Personas");
-////        JSONArray arraydos = ArrayJson("Animales");
-////        JSONObject usuario = new JSONObject();
-////        usuario.put("nombre", entraNR.getText());
-////        usuario.put("correo", inputCorreo.getText());
-////        usuario.put("rol", entradaRR.getText());
-////        usuario.put("contrasenia", inputPass.getPassword().toString());
-////        array.add(usuario);
-////        JSONObject json = new JSONObject();
-////        json.put("Personas", array);
-////        json.put("Animales", arraydos);
-//        FileReader usuario;
-//        BufferedReader lector;
-//      
-//        try {
-//            usuario=new FileReader("");
-//            if (usuario.ready()){
-//                lector= new BufferedReader(usuario);
-//                String cadena;
-//                while((cadena=lector.readLine())!=null){              
-//                }
-//                
-//            }else{
-//                
-//            }
-//        }catch(IOException e ){
-//        }
-//           
-//
-//
-////            FileWriter fichero = null;
-////        PrintWriter pw = null;
-////        try
-////        {
-////            fichero = new FileWriter("prueba.txt");
-////            pw = new PrintWriter(fichero);
-////
-////            for (int i = 0; i < 5; i++)
-////                pw.println("Linea " + i);
-////
-////        } catch (Exception e) {
-////            e.printStackTrace();
-////        } finally {
-////           try {
-////           // Nuevamente aprovechamos el finally para 
-////           // asegurarnos que se cierra el fichero.
-////           if (null != fichero)
-////              fichero.close();
-////           } catch (Exception e2) {
-////              e2.printStackTrace();
-////           }
-////        }
-//
-////        File archivo = new File ("/TxtJson/prueba.txt");
-////FileReader fr = new FileReader (archivo);
-////BufferedReader br = new BufferedReader(fr);
-////String linea = br.readLine();
-//
-////        try {
-////          
-////            File.write(json.toJSONString());
-////        } catch (IOException ex) {
-////            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-////        }
-////        try  {
-////              InputStream resourceStream = this.getClass().getResourceAsStream("/TxtJson/prueba.txt");
-////              File fy = new
-////              FileWriter file = new FileWriter();
-////           
-////             BufferedWriter bw = new BufferedWriter(file);
-////             PrintWriter out = new PrintWriter(bw);
-////            out.println("the text");
-////            //more code
-////            out.println("more text");
-////            //more code
-////        } catch (IOException e) {
-////            System.out.println(e.getMessage());
-////        }
-//    }
-//       public List<Usuario> ReadUser() {
-//
-//        List<Usuario> uss = new ArrayList<>();
-//        JSONArray array = ArrayJson("Personas");
-//        for (Object object : array) {
-//            String dts = object.toString();
-//            Gson gson = new Gson();
-//            Usuario usu = gson.fromJson(dts, Usuario.class);
-//            uss.add(usu);
-//        }
-//
-//        return uss;
-//    }
-    
-    
-    
-    
-    
+    public JSONArray ArrayJson(String key) {
+        JSONArray array = null;
+        try {
+            JSONParser Parser = new JSONParser();
+            InputStream resourceStream = this.getClass().getResourceAsStream("/TxtJson/prueba.txt");
+            BufferedReader archivo = new BufferedReader(new InputStreamReader(resourceStream, "UTF-8"));
+            JSONObject pJsonObj = (JSONObject) Parser.parse(archivo);
+            array = (JSONArray) pJsonObj.get(key);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+        } catch (UnsupportedEncodingException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IOException | ParseException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        return array;
+    }
+
+    public void Escribir() throws IOException {
+
+        JSONArray array = ArrayJson("Personas");
+        JSONArray arraydos = ArrayJson("Animales");
+        JSONObject usuario = new JSONObject();
+        usuario.put("nombre", entraNR.getText());
+        usuario.put("correo", inputCorreo.getText());
+        usuario.put("rol", entradaRR.getText());
+        usuario.put("contrasenia", inputPass.getPassword().toString());
+        array.add(usuario);
+        JSONObject json = new JSONObject();
+        json.put("Personas", array);
+        json.put("Animales", arraydos);
+     
+    }
+       public List<Usuario> ReadUser() {
+
+        List<Usuario> uss = new ArrayList<>();
+        JSONArray array = ArrayJson("Personas");
+        for (Object object : array) {
+            String dts = object.toString();
+            Gson gson = new Gson();
+            Usuario usu = gson.fromJson(dts, Usuario.class);
+            uss.add(usu);
+        }
+
+        return uss;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -333,5 +271,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-    
 }
