@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package abp2.pkg0;
+package MAIN;
 
-import vista.Login;
+import vista.LoginVista;
 
 /**
  *
@@ -16,8 +16,8 @@ public class ABP20 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Login alejita = new Login();
-        alejita.setVisible(true);
+        LoginVista inicio = new LoginVista();
+        inicio.setVisible(true);
     }
 
 }
