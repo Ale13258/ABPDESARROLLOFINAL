@@ -17,6 +17,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -592,21 +593,21 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_txtbuscarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-     
-      
+
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-           // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         JOptionPane.showMessageDialog(this, "Esta es una prueba para el botón ingresar, mientras resolvemos el problema Sigue viendo otras obciones ");
-        
+
 
     }//GEN-LAST:event_jButton11ActionPerformed
 
