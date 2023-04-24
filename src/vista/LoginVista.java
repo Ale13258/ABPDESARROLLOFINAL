@@ -1,40 +1,23 @@
-
 package vista;
 
-import com.google.gson.Gson;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
+import Controler.Metodos;
 import java.util.Arrays;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import model.Usuario;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
-/**
- *
- * @author Wilme
- */
+
 public class LoginVista extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoginVista
-     */
-    public  boolean ver=false;
+   
+    public boolean ver = false;
+
+    Metodos metodos = new Metodos();
+
     public LoginVista() {
         initComponents();
         visible.setVisible(false);
-       oculto.setVisible(true);
+        oculto.setVisible(true);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -61,7 +44,7 @@ public class LoginVista extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         ContrasenaLogin1 = new javax.swing.JPasswordField();
-        UsuarioLogin1 = new javax.swing.JTextField();
+        UsuarioLogin = new javax.swing.JTextField();
         Registro = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -204,15 +187,15 @@ public class LoginVista extends javax.swing.JFrame {
         });
         Login.add(ContrasenaLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 200, 30));
 
-        UsuarioLogin1.setBackground(new java.awt.Color(255, 204, 102));
-        UsuarioLogin1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        UsuarioLogin1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        UsuarioLogin1.addActionListener(new java.awt.event.ActionListener() {
+        UsuarioLogin.setBackground(new java.awt.Color(255, 204, 102));
+        UsuarioLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        UsuarioLogin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        UsuarioLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsuarioLogin1ActionPerformed(evt);
+                UsuarioLoginActionPerformed(evt);
             }
         });
-        Login.add(UsuarioLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 200, 30));
+        Login.add(UsuarioLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 200, 30));
 
         Base.add(Login, "card2");
 
@@ -316,6 +299,11 @@ public class LoginVista extends javax.swing.JFrame {
         jButtonValidar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonValidar.setText("Validar");
         jButtonValidar.setBorder(null);
+        jButtonValidar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonValidarActionPerformed(evt);
+            }
+        });
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nover.jpg"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -398,16 +386,14 @@ public class LoginVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
+        Usuario datos = new Usuario();
+        datos.usuario = UsuarioLogin.getText();
+        datos.contrasena = oculto.getText();
 
-        String name = oculto.getText();
-        char[] pass = visible.getPassword();
-        if ("test".equals(name) || "1234".equals(pass.toString())) {
-            JOptionPane.showMessageDialog(this, "Bienvenido");
-
-        } else {
-            JOptionPane.showMessageDialog(this, "Esta es una prueba para el botón ingresar, mientras resolvemos el problema échale un vistazo al menú");
-
+        if (metodos.Login(datos)) {
+            this.dispose();
         }
+
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void jButtonIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresarMouseClicked
@@ -416,11 +402,7 @@ public class LoginVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonIngresarMouseClicked
 
     private void jButtonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistrarMouseClicked
-        try {
-            Escribir();
-        } catch (IOException ex) {
-            Logger.getLogger(LoginVista.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }//GEN-LAST:event_jButtonRegistrarMouseClicked
 
     private void ocultoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ocultoActionPerformed
@@ -435,12 +417,13 @@ public class LoginVista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ContrasenaLogin1ActionPerformed
 
-    private void UsuarioLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioLogin1ActionPerformed
+    private void UsuarioLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UsuarioLogin1ActionPerformed
+    }//GEN-LAST:event_UsuarioLoginActionPerformed
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
-        // TODO add your handling code here:
+        Registro.setVisible(true);
+        Login.setVisible(false);
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     private void Ver(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver
@@ -448,13 +431,13 @@ public class LoginVista extends javax.swing.JFrame {
             oculto.setVisible(true);
             visible.setVisible(false);
             oculto.setText(visible.getText());
-            ver=false;
+            ver = false;
 
-        }else{
+        } else {
             oculto.setVisible(false);
             visible.setVisible(true);
             visible.setText(oculto.getText());
-            ver=true;
+            ver = true;
         }
 
         // TODO add your handling code here:
@@ -464,83 +447,13 @@ public class LoginVista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6Ver
 
-    public JSONArray ArrayJson(String key) {
-        JSONArray array = null;
-        try {
-            JSONParser Parser = new JSONParser();
-            InputStream resourceStream = this.getClass().getResourceAsStream("/TxtJson/prueba.txt");
-            BufferedReader archivo = new BufferedReader(new InputStreamReader(resourceStream, "UTF-8"));
-            JSONObject pJsonObj = (JSONObject) Parser.parse(archivo);
-            array = (JSONArray) pJsonObj.get(key);
-        } catch (FileNotFoundException ex) {
-            System.out.println("Archivo no encontrado");
-        } catch (UnsupportedEncodingException ex) {
-            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IOException | ParseException ex) {
-            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        return array;
-    }
-
-    public void Escribir() throws IOException {
-//        JSONArray array = ArrayJson("Personas");
-//        JSONArray arraydos = ArrayJson("Animales");
-//        JSONObject usuario = new JSONObject();
-//        usuario.put("nombre", Nombre.getText());
-//        usuario.put("correo", Correo.getText());
-//        usuario.put("contrasenia", Arrays.toString(Constrasena.getPassword()));
-//        array.add(usuario);
-//        JSONObject json = new JSONObject();
-//        json.put("Personas", array);
-
-        
-//         Obtener el JSONArray "Personas" del archivo JSON existente
-JSONArray array = ArrayJson("Personas");
-
-// Crear un nuevo objeto JSONObject con los datos que se desean agregar
-JSONObject usuario = new JSONObject();
-usuario.put("nombre", Nombre.getText());
-usuario.put("correo", Correo.getText());
-usuario.put("contrasenia", Arrays.toString(Constrasena.getPassword()));
-
-// Agregar el objeto JSONObject al JSONArray
-array.add(usuario);
-
-// Crear un nuevo objeto JSONObject que contenga el JSONArray actualizado
-JSONObject json = new JSONObject();
-json.put("Personas", array);
-
-FileWriter file = new FileWriter("/TxtJson/prueba.txt", true); //el segundo parámetro "true" indica que se va a agregar contenido al final del archivo
-file.write(json.toJSONString());
-file.flush();
-file.close();
-    }
-
-//JSONParser parser = new JSONParser();
-//try (FileReader reader = new FileReader("ruta/al/archivo.json")) {
-//    Object obj = parser.parse(reader);
-//    JSONObject jsonObject = (JSONObject) obj;
-//    // Acceder a los elementos del archivo JSON
-//    String nombre = (String) jsonObject.get("nombre");
-//    String correo = (String) jsonObject.get("correo");
-//    String contrasenia = (String) jsonObject.get("contrasenia");
-//} catch (IOException | ParseException e) {
-//    e.printStackTrace();
-//}
-
-
-    public List<Usuario> ReadUser() {
-        List<Usuario> uss = new ArrayList<>();
-        JSONArray array = ArrayJson("Personas");
-        for (Object object : array) {
-            String dts = object.toString();
-            Gson gson = new Gson();
-            Usuario usu = gson.fromJson(dts, Usuario.class);
-            uss.add(usu);
-        }
-
-        return uss;
-    }
+    private void jButtonValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidarActionPerformed
+        JSONObject usuario = new JSONObject();
+        usuario.put("nombre", Nombre.getText());
+        usuario.put("correo", Correo.getText());
+        usuario.put("Pass", Arrays.toString(Constrasena.getPassword()));
+        metodos.Escribir(usuario, "Personas");
+    }//GEN-LAST:event_jButtonValidarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -586,7 +499,7 @@ file.close();
     private javax.swing.JTextField Nombre;
     private javax.swing.JPanel Registro;
     private javax.swing.JTextField Usuario;
-    private javax.swing.JTextField UsuarioLogin1;
+    private javax.swing.JTextField UsuarioLogin;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

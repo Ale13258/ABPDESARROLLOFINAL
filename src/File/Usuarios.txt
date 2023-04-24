@@ -1,0 +1,28 @@
+{
+    "Personas": [
+        {
+            "apellido": "maza",
+            "contrasena": "123",
+            "id": "1",
+            "nombre": "wilmer",
+            "usuario": "wilmer_maza"
+        },
+        {
+            "apellido": "Alfaro",
+            "id": "2",
+            "nombre": "Alejandra",
+            "usuario": "alejandra_Alfaro",
+            "contrasena": "123"
+        },
+        {
+            "id": "3",
+            "usuario": "valentina",
+            "contrasena": "123"
+        },
+        {
+            "id": "4",
+            "usuario": "juan",
+            "contrasena": "123"
+        }
+    ]
+}
