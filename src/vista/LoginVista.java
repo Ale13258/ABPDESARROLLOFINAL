@@ -1,12 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package vista;
 
 import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -14,6 +12,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Usuario;
 import org.json.simple.JSONArray;
@@ -30,8 +30,11 @@ public class LoginVista extends javax.swing.JFrame {
     /**
      * Creates new form LoginVista
      */
+    public  boolean ver=false;
     public LoginVista() {
         initComponents();
+        visible.setVisible(false);
+       oculto.setVisible(true);
     }
 
     /**
@@ -53,10 +56,12 @@ public class LoginVista extends javax.swing.JFrame {
         jButtonLogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        ContrasenaLogin = new javax.swing.JPasswordField();
-        UsuarioLogin = new javax.swing.JTextField();
+        visible = new javax.swing.JPasswordField();
+        oculto = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        ContrasenaLogin1 = new javax.swing.JPasswordField();
+        UsuarioLogin1 = new javax.swing.JTextField();
         Registro = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -71,6 +76,7 @@ public class LoginVista extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         Constrasena = new javax.swing.JPasswordField();
         jButtonValidar = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +99,11 @@ public class LoginVista extends javax.swing.JFrame {
         jButtonRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonRegistrarMouseClicked(evt);
+            }
+        });
+        jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarActionPerformed(evt);
             }
         });
         jPanel2.add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 120, 30));
@@ -126,7 +137,7 @@ public class LoginVista extends javax.swing.JFrame {
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 120, 50));
 
-        Login.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 340, 530));
+        Login.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 350, 540));
 
         jButtonLogin.setBackground(new java.awt.Color(95, 15, 64));
         jButtonLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -150,22 +161,58 @@ public class LoginVista extends javax.swing.JFrame {
         jLabel2.setText("Contraseña:");
         Login.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 140, 30));
 
-        ContrasenaLogin.setBackground(new java.awt.Color(255, 204, 102));
-        ContrasenaLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ContrasenaLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        ContrasenaLogin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Login.add(ContrasenaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 200, 30));
+        visible.setBackground(new java.awt.Color(255, 204, 102));
+        visible.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        visible.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visible.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        visible.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visibleActionPerformed(evt);
+            }
+        });
+        Login.add(visible, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 200, 30));
 
-        UsuarioLogin.setBackground(new java.awt.Color(255, 204, 102));
-        UsuarioLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        UsuarioLogin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Login.add(UsuarioLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 200, 30));
+        oculto.setBackground(new java.awt.Color(255, 204, 102));
+        oculto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        oculto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        oculto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ocultoActionPerformed(evt);
+            }
+        });
+        Login.add(oculto, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 200, 30));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
         Login.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 220, 120));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nover.jpg"))); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ver(evt);
+            }
+        });
         Login.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 30, 20));
+
+        ContrasenaLogin1.setBackground(new java.awt.Color(255, 204, 102));
+        ContrasenaLogin1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ContrasenaLogin1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ContrasenaLogin1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        ContrasenaLogin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContrasenaLogin1ActionPerformed(evt);
+            }
+        });
+        Login.add(ContrasenaLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 200, 30));
+
+        UsuarioLogin1.setBackground(new java.awt.Color(255, 204, 102));
+        UsuarioLogin1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        UsuarioLogin1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        UsuarioLogin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UsuarioLogin1ActionPerformed(evt);
+            }
+        });
+        Login.add(UsuarioLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 200, 30));
 
         Base.add(Login, "card2");
 
@@ -270,6 +317,13 @@ public class LoginVista extends javax.swing.JFrame {
         jButtonValidar.setText("Validar");
         jButtonValidar.setBorder(null);
 
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nover.jpg"))); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6Ver(evt);
+            }
+        });
+
         javax.swing.GroupLayout RegistroLayout = new javax.swing.GroupLayout(Registro);
         Registro.setLayout(RegistroLayout);
         RegistroLayout.setHorizontalGroup(
@@ -287,11 +341,14 @@ public class LoginVista extends javax.swing.JFrame {
                             .addGroup(RegistroLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Constrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(RegistroLayout.createSequentialGroup()
+                                        .addComponent(Constrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 61, Short.MAX_VALUE))
+                        .addGap(0, 28, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistroLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,8 +373,10 @@ public class LoginVista extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel10)
                 .addGap(7, 7, 7)
-                .addComponent(Constrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Constrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(jButtonValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
         );
@@ -340,30 +399,72 @@ public class LoginVista extends javax.swing.JFrame {
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
 
-        String name = UsuarioLogin.getText();
-        char[] pass = ContrasenaLogin.getPassword();
+        String name = oculto.getText();
+        char[] pass = visible.getPassword();
         if ("test".equals(name) || "1234".equals(pass.toString())) {
             JOptionPane.showMessageDialog(this, "Bienvenido");
 
         } else {
             JOptionPane.showMessageDialog(this, "Esta es una prueba para el botón ingresar, mientras resolvemos el problema échale un vistazo al menú");
-         
+
         }
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void jButtonIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresarMouseClicked
-       Registro.setVisible(false);
-      Login.setVisible(true);
+        Registro.setVisible(false);
+        Login.setVisible(true);
     }//GEN-LAST:event_jButtonIngresarMouseClicked
 
     private void jButtonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistrarMouseClicked
-      Registro.setVisible(true);
-      Login.setVisible(false);
+        try {
+            Escribir();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonRegistrarMouseClicked
 
-    
-    
-        public JSONArray ArrayJson(String key) {
+    private void ocultoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ocultoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ocultoActionPerformed
+
+    private void visibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visibleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visibleActionPerformed
+
+    private void ContrasenaLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContrasenaLogin1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ContrasenaLogin1ActionPerformed
+
+    private void UsuarioLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioLogin1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UsuarioLogin1ActionPerformed
+
+    private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRegistrarActionPerformed
+
+    private void Ver(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver
+        if (ver) {
+            oculto.setVisible(true);
+            visible.setVisible(false);
+            oculto.setText(visible.getText());
+            ver=false;
+
+        }else{
+            oculto.setVisible(false);
+            visible.setVisible(true);
+            visible.setText(oculto.getText());
+            ver=true;
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Ver
+
+    private void jButton6Ver(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6Ver
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6Ver
+
+    public JSONArray ArrayJson(String key) {
         JSONArray array = null;
         try {
             JSONParser Parser = new JSONParser();
@@ -382,21 +483,53 @@ public class LoginVista extends javax.swing.JFrame {
     }
 
     public void Escribir() throws IOException {
+//        JSONArray array = ArrayJson("Personas");
+//        JSONArray arraydos = ArrayJson("Animales");
+//        JSONObject usuario = new JSONObject();
+//        usuario.put("nombre", Nombre.getText());
+//        usuario.put("correo", Correo.getText());
+//        usuario.put("contrasenia", Arrays.toString(Constrasena.getPassword()));
+//        array.add(usuario);
+//        JSONObject json = new JSONObject();
+//        json.put("Personas", array);
 
-        JSONArray array = ArrayJson("Personas");
-        JSONArray arraydos = ArrayJson("Animales");
-        JSONObject usuario = new JSONObject();
-        usuario.put("nombre", Nombre.getText());
-        usuario.put("correo", Correo.getText());
-        usuario.put("contrasenia", Arrays.toString(Constrasena.getPassword()));
-        array.add(usuario);
-        JSONObject json = new JSONObject();
-        json.put("Personas", array);
-        json.put("Animales", arraydos);
-     
+        
+//         Obtener el JSONArray "Personas" del archivo JSON existente
+JSONArray array = ArrayJson("Personas");
+
+// Crear un nuevo objeto JSONObject con los datos que se desean agregar
+JSONObject usuario = new JSONObject();
+usuario.put("nombre", Nombre.getText());
+usuario.put("correo", Correo.getText());
+usuario.put("contrasenia", Arrays.toString(Constrasena.getPassword()));
+
+// Agregar el objeto JSONObject al JSONArray
+array.add(usuario);
+
+// Crear un nuevo objeto JSONObject que contenga el JSONArray actualizado
+JSONObject json = new JSONObject();
+json.put("Personas", array);
+
+FileWriter file = new FileWriter("/TxtJson/prueba.txt", true); //el segundo parámetro "true" indica que se va a agregar contenido al final del archivo
+file.write(json.toJSONString());
+file.flush();
+file.close();
     }
-       public List<Usuario> ReadUser() {
 
+//JSONParser parser = new JSONParser();
+//try (FileReader reader = new FileReader("ruta/al/archivo.json")) {
+//    Object obj = parser.parse(reader);
+//    JSONObject jsonObject = (JSONObject) obj;
+//    // Acceder a los elementos del archivo JSON
+//    String nombre = (String) jsonObject.get("nombre");
+//    String correo = (String) jsonObject.get("correo");
+//    String contrasenia = (String) jsonObject.get("contrasenia");
+//} catch (IOException | ParseException e) {
+//    e.printStackTrace();
+//}
+
+
+    public List<Usuario> ReadUser() {
         List<Usuario> uss = new ArrayList<>();
         JSONArray array = ArrayJson("Personas");
         for (Object object : array) {
@@ -408,9 +541,7 @@ public class LoginVista extends javax.swing.JFrame {
 
         return uss;
     }
-    
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -449,16 +580,17 @@ public class LoginVista extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Base;
     private javax.swing.JPasswordField Constrasena;
-    private javax.swing.JPasswordField ContrasenaLogin;
+    private javax.swing.JPasswordField ContrasenaLogin1;
     private javax.swing.JTextField Correo;
     private javax.swing.JPanel Login;
     private javax.swing.JTextField Nombre;
     private javax.swing.JPanel Registro;
     private javax.swing.JTextField Usuario;
-    private javax.swing.JTextField UsuarioLogin;
+    private javax.swing.JTextField UsuarioLogin1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonIngresar;
     private javax.swing.JButton jButtonLogin;
@@ -475,5 +607,7 @@ public class LoginVista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JTextField oculto;
+    private javax.swing.JPasswordField visible;
     // End of variables declaration//GEN-END:variables
 }
