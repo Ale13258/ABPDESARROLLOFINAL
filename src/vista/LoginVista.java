@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package vista;
 
 import com.google.gson.Gson;
@@ -79,6 +76,7 @@ public class LoginVista extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         Constrasena = new javax.swing.JPasswordField();
         jButtonValidar = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,6 +99,11 @@ public class LoginVista extends javax.swing.JFrame {
         jButtonRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonRegistrarMouseClicked(evt);
+            }
+        });
+        jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarActionPerformed(evt);
             }
         });
         jPanel2.add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 120, 30));
@@ -134,7 +137,7 @@ public class LoginVista extends javax.swing.JFrame {
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 120, 50));
 
-        Login.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 340, 530));
+        Login.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 350, 540));
 
         jButtonLogin.setBackground(new java.awt.Color(95, 15, 64));
         jButtonLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -314,6 +317,13 @@ public class LoginVista extends javax.swing.JFrame {
         jButtonValidar.setText("Validar");
         jButtonValidar.setBorder(null);
 
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nover.jpg"))); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6Ver(evt);
+            }
+        });
+
         javax.swing.GroupLayout RegistroLayout = new javax.swing.GroupLayout(Registro);
         Registro.setLayout(RegistroLayout);
         RegistroLayout.setHorizontalGroup(
@@ -331,11 +341,14 @@ public class LoginVista extends javax.swing.JFrame {
                             .addGroup(RegistroLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Constrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(RegistroLayout.createSequentialGroup()
+                                        .addComponent(Constrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 61, Short.MAX_VALUE))
+                        .addGap(0, 28, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistroLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,8 +373,10 @@ public class LoginVista extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel10)
                 .addGap(7, 7, 7)
-                .addComponent(Constrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Constrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(jButtonValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
         );
@@ -408,23 +423,6 @@ public class LoginVista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonRegistrarMouseClicked
 
-    private void Ver(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver
-        if (ver) {
-            oculto.setVisible(true);
-           visible.setVisible(false);
-           oculto.setText(visible.getText());
-           ver=false;
-            
-        }else{
-               oculto.setVisible(false);
-           visible.setVisible(true);
-           visible.setText(oculto.getText());
-        ver=true;
-    }
-        
-       // TODO add your handling code here:
-    }//GEN-LAST:event_Ver
-
     private void ocultoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ocultoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ocultoActionPerformed
@@ -440,6 +438,31 @@ public class LoginVista extends javax.swing.JFrame {
     private void UsuarioLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioLogin1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UsuarioLogin1ActionPerformed
+
+    private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRegistrarActionPerformed
+
+    private void Ver(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver
+        if (ver) {
+            oculto.setVisible(true);
+            visible.setVisible(false);
+            oculto.setText(visible.getText());
+            ver=false;
+
+        }else{
+            oculto.setVisible(false);
+            visible.setVisible(true);
+            visible.setText(oculto.getText());
+            ver=true;
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Ver
+
+    private void jButton6Ver(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6Ver
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6Ver
 
     public JSONArray ArrayJson(String key) {
         JSONArray array = null;
@@ -460,38 +483,51 @@ public class LoginVista extends javax.swing.JFrame {
     }
 
     public void Escribir() throws IOException {
-        JSONArray array = ArrayJson("Personas");
-        JSONArray arraydos = ArrayJson("Animales");
-        JSONObject usuario = new JSONObject();
-        usuario.put("nombre", Nombre.getText());
-        usuario.put("correo", Correo.getText());
-        usuario.put("contrasenia", Arrays.toString(Constrasena.getPassword()));
-        array.add(usuario);
-        JSONObject json = new JSONObject();
-        json.put("Personas", array);
-        json.put("Animales", arraydos);
+//        JSONArray array = ArrayJson("Personas");
+//        JSONArray arraydos = ArrayJson("Animales");
+//        JSONObject usuario = new JSONObject();
+//        usuario.put("nombre", Nombre.getText());
+//        usuario.put("correo", Correo.getText());
+//        usuario.put("contrasenia", Arrays.toString(Constrasena.getPassword()));
+//        array.add(usuario);
+//        JSONObject json = new JSONObject();
+//        json.put("Personas", array);
+
         
-//        // Obtener el JSONArray "Personas" del archivo JSON existente
-//JSONArray array = ArrayJson("Personas");
-//
-//// Crear un nuevo objeto JSONObject con los datos que se desean agregar
-//JSONObject usuario = new JSONObject();
-//usuario.put("nombre", Nombre.getText());
-//usuario.put("correo", Correo.getText());
-//usuario.put("contrasenia", Arrays.toString(Constrasena.getPassword()));
-//
-//// Agregar el objeto JSONObject al JSONArray
-//array.add(usuario);
-//
-//// Crear un nuevo objeto JSONObject que contenga el JSONArray actualizado
-//JSONObject json = new JSONObject();
-//json.put("Personas", array);
+//         Obtener el JSONArray "Personas" del archivo JSON existente
+JSONArray array = ArrayJson("Personas");
+
+// Crear un nuevo objeto JSONObject con los datos que se desean agregar
+JSONObject usuario = new JSONObject();
+usuario.put("nombre", Nombre.getText());
+usuario.put("correo", Correo.getText());
+usuario.put("contrasenia", Arrays.toString(Constrasena.getPassword()));
+
+// Agregar el objeto JSONObject al JSONArray
+array.add(usuario);
+
+// Crear un nuevo objeto JSONObject que contenga el JSONArray actualizado
+JSONObject json = new JSONObject();
+json.put("Personas", array);
 
 FileWriter file = new FileWriter("/TxtJson/prueba.txt", true); //el segundo parámetro "true" indica que se va a agregar contenido al final del archivo
 file.write(json.toJSONString());
 file.flush();
 file.close();
     }
+
+//JSONParser parser = new JSONParser();
+//try (FileReader reader = new FileReader("ruta/al/archivo.json")) {
+//    Object obj = parser.parse(reader);
+//    JSONObject jsonObject = (JSONObject) obj;
+//    // Acceder a los elementos del archivo JSON
+//    String nombre = (String) jsonObject.get("nombre");
+//    String correo = (String) jsonObject.get("correo");
+//    String contrasenia = (String) jsonObject.get("contrasenia");
+//} catch (IOException | ParseException e) {
+//    e.printStackTrace();
+//}
+
 
     public List<Usuario> ReadUser() {
         List<Usuario> uss = new ArrayList<>();
@@ -554,6 +590,7 @@ file.close();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonIngresar;
     private javax.swing.JButton jButtonLogin;
