@@ -41,10 +41,11 @@ public class LoginVista extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         visible = new javax.swing.JPasswordField();
         oculto = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         ContrasenaLogin1 = new javax.swing.JPasswordField();
         UsuarioLogin = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
         Registro = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -127,6 +128,7 @@ public class LoginVista extends javax.swing.JFrame {
         jButtonLogin.setForeground(new java.awt.Color(255, 255, 255));
         jButtonLogin.setText("Ingresar");
         jButtonLogin.setBorder(null);
+        jButtonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLoginActionPerformed(evt);
@@ -165,10 +167,12 @@ public class LoginVista extends javax.swing.JFrame {
         });
         Login.add(oculto, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 200, 30));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
-        Login.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 220, 120));
-
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nover.jpg"))); // NOI18N
+        jButton5.setBorder(null);
+        jButton5.setBorderPainted(false);
+        jButton5.setContentAreaFilled(false);
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setDefaultCapable(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Ver(evt);
@@ -197,11 +201,35 @@ public class LoginVista extends javax.swing.JFrame {
         });
         Login.add(UsuarioLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 200, 30));
 
+        jTextField1.setText("jTextField1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        Login.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 180, -1));
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Diseño sin título (1).png"))); // NOI18N
+        jButton4.setBorder(null);
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.setDefaultCapable(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        Login.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 230, 120));
+
         Base.add(Login, "card2");
 
         Registro.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel9.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel9.setDoubleBuffered(false);
+        jPanel9.setEnabled(false);
+        jPanel9.setFocusable(false);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -211,7 +239,12 @@ public class LoginVista extends javax.swing.JFrame {
         jButton9.setBorder(null);
         jButton9.setBorderPainted(false);
         jButton9.setContentAreaFilled(false);
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -452,8 +485,20 @@ public class LoginVista extends javax.swing.JFrame {
         usuario.put("nombre", Nombre.getText());
         usuario.put("correo", Correo.getText());
         usuario.put("Pass", Arrays.toString(Constrasena.getPassword()));
-        metodos.Escribir(usuario, "Personas");
+        metodos.Escribir(usuario, "Personas","Usuarios");
     }//GEN-LAST:event_jButtonValidarActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -520,6 +565,7 @@ public class LoginVista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField oculto;
     private javax.swing.JPasswordField visible;
     // End of variables declaration//GEN-END:variables
