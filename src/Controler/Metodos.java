@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,33 +35,57 @@ public class Metodos {
 
     public Boolean flags = false;
 
-    public void Escribir(JSONObject datos, String key) {
-        JSONArray array = ArrayJson(key);
-        array.add(datos);
+    public void Escribir(JSONObject datos, String key, String nombreFile) {
+        JSONArray array = new JSONArray();
         JSONObject json = new JSONObject();
-        json.put(key, array);
+
+        if (leerArchivo(nombreFile)) {
+            array.add(datos);
+            json.put(key, array);
+        }else{
+          array =  ArrayJson(key,nombreFile);
+          array.add(datos);
+          json.put(key, array);
+        }
 
         // Convertir objeto JSON a cadena
         String jsonString = json.toString();
 
         try {
-            BufferedWriter archivo = new BufferedWriter(new FileWriter("src/File/Usuarios.txt"));
+            BufferedWriter archivo = new BufferedWriter(new FileWriter("src/File/"+nombreFile+".txt"));
             archivo.write(jsonString);
             archivo.flush();
 
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo", "EROOR!!!", JOptionPane.ERROR_MESSAGE);
         }
 
     }
 
-    public JSONArray ArrayJson(String key) {
+    public boolean leerArchivo(String nombreFile) {
+        boolean flag = false;
+        BufferedReader archivo = null;
+
+        try {
+            archivo = new BufferedReader(new FileReader("src/File/" + nombreFile + ".txt"));
+            if (archivo.readLine() == null) {
+                flag = true;
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return flag;
+    }
+
+    public JSONArray ArrayJson(String key, String nombreFile) {
         JSONArray array = null;
         try {
             JSONParser Parser = new JSONParser();
-            InputStream resourceStream = this.getClass().getResourceAsStream("/File/Usuarios.txt");
+            InputStream resourceStream = this.getClass().getResourceAsStream("/File/" + nombreFile + ".txt");
             BufferedReader archivo = new BufferedReader(new InputStreamReader(resourceStream, "UTF-8"));
             JSONObject pJsonObj = (JSONObject) Parser.parse(archivo);
             array = (JSONArray) pJsonObj.get(key);
@@ -76,7 +101,7 @@ public class Metodos {
 
     public List<Usuario> ReadUser() {
         List<Usuario> uss = new ArrayList<>();
-        JSONArray array = ArrayJson("Personas");
+        JSONArray array = ArrayJson("Personas", "Usuarios");
         for (Object object : array) {
             String dts = object.toString();
             Gson gson = new Gson();

@@ -1,0 +1,1 @@
+{"Inventario":[{"DiagnosticoEquipo ":"xsaf","RecibePor":"jua12"," EntregadoPor":"111","contactoCliente ":"2233"},{"DiagnosticoEquipo ":"xsaff2f","RecibePor":"hola"," EntregadoPor":"si","contactoCliente ":"buena"}]}
