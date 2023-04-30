@@ -14,12 +14,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Usuario;
+import model.Inventario;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -42,17 +45,17 @@ public class Metodos {
         if (leerArchivo(nombreFile)) {
             array.add(datos);
             json.put(key, array);
-        }else{
-          array =  ArrayJson(key,nombreFile);
-          array.add(datos);
-          json.put(key, array);
+        } else {
+            array = ArrayJson(key, nombreFile);
+            array.add(datos);
+            json.put(key, array);
         }
 
         // Convertir objeto JSON a cadena
         String jsonString = json.toString();
 
         try {
-            BufferedWriter archivo = new BufferedWriter(new FileWriter("src/File/"+nombreFile+".txt"));
+            BufferedWriter archivo = new BufferedWriter(new FileWriter("src/File/" + nombreFile + ".txt"));
             archivo.write(jsonString);
             archivo.flush();
 
@@ -128,6 +131,19 @@ public class Metodos {
 
         return flags;
 
+    }
+
+    public List<Inventario> obtenerEquipos() {
+        List<Inventario> equipos = new ArrayList<>();
+        JSONArray array = ArrayJson("Inventario", "Inventario");
+   
+        for (Object object : array) {
+            Gson gson = new Gson();
+            Inventario nuevo = gson.fromJson(object.toString(), Inventario.class);
+            
+            equipos.add(nuevo);
+        }
+        return equipos;
     }
 
 }

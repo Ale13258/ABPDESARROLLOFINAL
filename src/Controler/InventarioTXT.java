@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Usuario;
-import model.inventario;
+import model.Inventario;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -71,13 +71,13 @@ public class InventarioTXT {
         return array;
     }
 
-    public List<inventario> ReadUser() {
-        List<inventario> uss = new ArrayList<>();
+    public List<Inventario> ReadUser() {
+        List<Inventario> uss = new ArrayList<>();
         JSONArray array = ArrayJson("Inventario");
         for (Object object : array) {
             String dts = object.toString();
             Gson gson = new Gson();
-            inventario usu = gson.fromJson(dts, inventario.class);
+            Inventario usu = gson.fromJson(dts, Inventario.class);
             uss.add(usu);
         }
 
