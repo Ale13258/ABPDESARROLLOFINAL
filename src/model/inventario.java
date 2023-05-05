@@ -10,6 +10,10 @@ package model;
  * @author aleja
  */
 public class Inventario {
+
+    public static void remove(int Fila) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
      private String RecibidoPor;
      private String contactoCliente;
     private String EntregadoPor;

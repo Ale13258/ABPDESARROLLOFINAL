@@ -5,10 +5,8 @@ import java.util.Arrays;
 import model.Usuario;
 import org.json.simple.JSONObject;
 
-
 public class LoginVista extends javax.swing.JFrame {
 
-   
     public boolean ver = false;
 
     Metodos metodos = new Metodos();
@@ -484,8 +482,11 @@ public class LoginVista extends javax.swing.JFrame {
         JSONObject usuario = new JSONObject();
         usuario.put("nombre", Nombre.getText());
         usuario.put("correo", Correo.getText());
-        usuario.put("Pass", Arrays.toString(Constrasena.getPassword()));
-        metodos.Escribir(usuario, "Personas","Usuarios");
+        usuario.put("usuario", Usuario.getText());
+        char[] contraseñaChar = Constrasena.getPassword();
+        String ConstrasenaString = String.valueOf(contraseñaChar);
+        usuario.put("contrasena", ConstrasenaString);
+        metodos.Escribir(usuario, "Personas", "Usuarios");
     }//GEN-LAST:event_jButtonValidarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
