@@ -2,6 +2,7 @@ package vista;
 
 import Controler.Metodos;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 import model.Usuario;
 import org.json.simple.JSONObject;
 
@@ -42,7 +43,6 @@ public class LoginVista extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         ContrasenaLogin1 = new javax.swing.JPasswordField();
         UsuarioLogin = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         Registro = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -77,7 +77,7 @@ public class LoginVista extends javax.swing.JFrame {
         jButtonRegistrar.setBorder(null);
         jButtonRegistrar.setBorderPainted(false);
         jButtonRegistrar.setContentAreaFilled(false);
-        jButtonRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonRegistrarMouseClicked(evt);
@@ -102,7 +102,7 @@ public class LoginVista extends javax.swing.JFrame {
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -169,7 +169,7 @@ public class LoginVista extends javax.swing.JFrame {
         jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.setDefaultCapable(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,14 +198,6 @@ public class LoginVista extends javax.swing.JFrame {
             }
         });
         Login.add(UsuarioLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 200, 30));
-
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        Login.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 180, -1));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Diseño sin título (1).png"))); // NOI18N
         jButton4.setBorder(null);
@@ -237,7 +229,7 @@ public class LoginVista extends javax.swing.JFrame {
         jButton9.setBorder(null);
         jButton9.setBorderPainted(false);
         jButton9.setContentAreaFilled(false);
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -266,7 +258,7 @@ public class LoginVista extends javax.swing.JFrame {
         jButtonIngresar.setBorder(null);
         jButtonIngresar.setBorderPainted(false);
         jButtonIngresar.setContentAreaFilled(false);
-        jButtonIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonIngresarMouseClicked(evt);
@@ -330,6 +322,7 @@ public class LoginVista extends javax.swing.JFrame {
         jButtonValidar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonValidar.setText("Validar");
         jButtonValidar.setBorder(null);
+        jButtonValidar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonValidar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonValidarActionPerformed(evt);
@@ -337,6 +330,7 @@ public class LoginVista extends javax.swing.JFrame {
         });
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nover.jpg"))); // NOI18N
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6Ver(evt);
@@ -417,13 +411,17 @@ public class LoginVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        Usuario datos = new Usuario();
-        datos.usuario = UsuarioLogin.getText();
-        datos.contrasena = oculto.getText();
+      Usuario datos = new Usuario();
+datos.usuario = UsuarioLogin.getText();
+datos.contrasena = oculto.getText();
 
-        if (metodos.Login(datos)) {
-            this.dispose();
-        }
+if (metodos.Login(datos)) {
+    JOptionPane.showMessageDialog(null, "¡Bienvenido " + datos.usuario + "!", "Inicio de sesión exitoso", JOptionPane.INFORMATION_MESSAGE);
+    this.dispose();
+} else {
+    JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+}
+        
 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
@@ -492,10 +490,6 @@ public class LoginVista extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
@@ -566,7 +560,6 @@ public class LoginVista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField oculto;
     private javax.swing.JPasswordField visible;
     // End of variables declaration//GEN-END:variables
