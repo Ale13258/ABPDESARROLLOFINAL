@@ -39,7 +39,7 @@ public class Menu extends javax.swing.JFrame {
         Base = new javax.swing.JPanel();
         Menu = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
+        panelblancomenu = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -49,11 +49,12 @@ public class Menu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         txtbuscar = new javax.swing.JTextField();
         btnbuscar1 = new javax.swing.JButton();
-        Guardar = new javax.swing.JButton();
+        BotonGenerarInforme = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        jButton18 = new javax.swing.JButton();
+        Regresarinventario = new javax.swing.JButton();
+        Guardar3 = new javax.swing.JButton();
         RegistroEquipos = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -75,7 +76,7 @@ public class Menu extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         modelo = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jButton17 = new javax.swing.JButton();
+        BotonRegresarRegistroEquipos = new javax.swing.JButton();
         Servicios = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -111,7 +112,6 @@ public class Menu extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         Guardar1 = new javax.swing.JButton();
         Guardar2 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,7 +134,7 @@ public class Menu extends javax.swing.JFrame {
 
         Menu.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, -40, 80, 20));
 
-        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        panelblancomenu.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Diseño sin título (1).png"))); // NOI18N
         jButton5.setBorder(null);
@@ -202,11 +202,11 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelblancomenuLayout = new javax.swing.GroupLayout(panelblancomenu);
+        panelblancomenu.setLayout(panelblancomenuLayout);
+        panelblancomenuLayout.setHorizontalGroup(
+            panelblancomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelblancomenuLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jButton6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
@@ -216,30 +216,30 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jButton8)
                 .addGap(54, 54, 54))
-            .addGroup(jPanel11Layout.createSequentialGroup()
+            .addGroup(panelblancomenuLayout.createSequentialGroup()
                 .addGap(254, 254, 254)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
+        panelblancomenuLayout.setVerticalGroup(
+            panelblancomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelblancomenuLayout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelblancomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelblancomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                         .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jButton9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(84, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelblancomenuLayout.createSequentialGroup()
                 .addGap(16, 233, Short.MAX_VALUE)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82))
         );
 
-        Menu.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 750, 480));
+        Menu.add(panelblancomenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 750, 480));
 
         Base.add(Menu, "card4");
 
@@ -259,14 +259,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        Guardar.setBackground(new java.awt.Color(0, 0, 51));
-        Guardar.setForeground(new java.awt.Color(255, 255, 255));
-        Guardar.setText("Guardar");
-        Guardar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Guardar.addActionListener(new java.awt.event.ActionListener() {
+        BotonGenerarInforme.setBackground(new java.awt.Color(0, 0, 51));
+        BotonGenerarInforme.setForeground(new java.awt.Color(255, 255, 255));
+        BotonGenerarInforme.setText("Generar Informe ");
+        BotonGenerarInforme.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonGenerarInforme.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonGenerarInforme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarActionPerformed(evt);
+                BotonGenerarInformeActionPerformed(evt);
             }
         });
 
@@ -291,14 +291,25 @@ public class Menu extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tabla);
 
-        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Regresar.jpg"))); // NOI18N
-        jButton18.setBorder(null);
-        jButton18.setBorderPainted(false);
-        jButton18.setContentAreaFilled(false);
-        jButton18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
+        Regresarinventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Regresar.jpg"))); // NOI18N
+        Regresarinventario.setBorder(null);
+        Regresarinventario.setBorderPainted(false);
+        Regresarinventario.setContentAreaFilled(false);
+        Regresarinventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Regresarinventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
+                RegresarinventarioActionPerformed(evt);
+            }
+        });
+
+        Guardar3.setBackground(new java.awt.Color(0, 0, 51));
+        Guardar3.setForeground(new java.awt.Color(255, 255, 255));
+        Guardar3.setText("Guardar");
+        Guardar3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Guardar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Guardar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Guardar3ActionPerformed(evt);
             }
         });
 
@@ -307,52 +318,53 @@ public class Menu extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnbuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108)
-                .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(233, 233, 233))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(jButton18)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addComponent(Regresarinventario))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(Guardar3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81)
+                        .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(93, 93, 93)
+                        .addComponent(BotonGenerarInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnbuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jButton18)
-                .addGap(45, 45, 45)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(98, 98, 98)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnbuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addComponent(Regresarinventario)
+                .addGap(55, 55, 55)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnbuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Guardar3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BotonGenerarInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout InventarioLayout = new javax.swing.GroupLayout(Inventario);
         Inventario.setLayout(InventarioLayout);
         InventarioLayout.setHorizontalGroup(
             InventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InventarioLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         InventarioLayout.setVerticalGroup(
             InventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -430,14 +442,14 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel11.setText("Modelo");
 
-        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Regresar.jpg"))); // NOI18N
-        jButton17.setBorder(null);
-        jButton17.setBorderPainted(false);
-        jButton17.setContentAreaFilled(false);
-        jButton17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
+        BotonRegresarRegistroEquipos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Regresar.jpg"))); // NOI18N
+        BotonRegresarRegistroEquipos.setBorder(null);
+        BotonRegresarRegistroEquipos.setBorderPainted(false);
+        BotonRegresarRegistroEquipos.setContentAreaFilled(false);
+        BotonRegresarRegistroEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonRegresarRegistroEquipos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+                BotonRegresarRegistroEquiposActionPerformed(evt);
             }
         });
 
@@ -485,14 +497,14 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(0, 85, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jButton17)
+                .addComponent(BotonRegresarRegistroEquipos)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jButton17)
+                .addComponent(BotonRegresarRegistroEquipos)
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
@@ -863,12 +875,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Regresar.jpg"))); // NOI18N
-        jButton19.setBorder(null);
-        jButton19.setBorderPainted(false);
-        jButton19.setContentAreaFilled(false);
-        jButton19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Regresar.jpg"))); // NOI18N
         jButton20.setBorder(null);
         jButton20.setBorderPainted(false);
@@ -906,16 +912,11 @@ public class Menu extends javax.swing.JFrame {
                         .addGroup(PanelBlancoFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Guardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(112, 173, Short.MAX_VALUE))
+                .addGap(112, 185, Short.MAX_VALUE))
             .addGroup(PanelBlancoFondoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jDayChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(PanelBlancoFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PanelBlancoFondoLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jButton19)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         PanelBlancoFondoLayout.setVerticalGroup(
             PanelBlancoFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -938,11 +939,6 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jDayChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelBlancoFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PanelBlancoFondoLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jButton19)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout CalendarioALayout = new javax.swing.GroupLayout(CalendarioA);
@@ -999,9 +995,10 @@ public class Menu extends javax.swing.JFrame {
         RegistroEquipos.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
-        cargarInformacion();
-    }//GEN-LAST:event_GuardarActionPerformed
+    private void BotonGenerarInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGenerarInformeActionPerformed
+ JOptionPane.showMessageDialog(null, "En este momento se está generando un pdf con toda la informacion registrada " +  "!", " Aviso", JOptionPane.INFORMATION_MESSAGE);
+           
+    }//GEN-LAST:event_BotonGenerarInformeActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         Eliminar();        // TODO add your handling code here:
@@ -1043,20 +1040,24 @@ public class Menu extends javax.swing.JFrame {
         Menu.setVisible(true);
     }//GEN-LAST:event_jButton16ActionPerformed
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+    private void BotonRegresarRegistroEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarRegistroEquiposActionPerformed
 RegistroEquipos.setVisible(false);
         Menu.setVisible(true);       
-    }//GEN-LAST:event_jButton17ActionPerformed
+    }//GEN-LAST:event_BotonRegresarRegistroEquiposActionPerformed
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+    private void RegresarinventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarinventarioActionPerformed
      Inventario.setVisible(false);
         Menu.setVisible(true); 
-    }//GEN-LAST:event_jButton18ActionPerformed
+    }//GEN-LAST:event_RegresarinventarioActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         Inventario.setVisible(false);
         Menu.setVisible(true);
     }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void Guardar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Guardar3ActionPerformed
 
     DefaultTableModel modelo6;
 
@@ -1158,18 +1159,21 @@ RegistroEquipos.setVisible(false);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Base;
+    private javax.swing.JButton BotonGenerarInforme;
+    private javax.swing.JButton BotonRegresarRegistroEquipos;
     private javax.swing.JPanel CalendarioA;
     private javax.swing.JTextArea DiagnosticoEquipo;
     private javax.swing.JTextField EntregadoPor;
-    private javax.swing.JButton Guardar;
     private javax.swing.JButton Guardar1;
     private javax.swing.JButton Guardar2;
+    private javax.swing.JButton Guardar3;
     private javax.swing.JPanel Inventario;
     private javax.swing.JPanel Menu;
     private javax.swing.JTextField NombreE;
     private javax.swing.JPanel PanelBlancoFondo;
     private javax.swing.JTextField RecibidoPor;
     private javax.swing.JPanel RegistroEquipos;
+    private javax.swing.JButton Regresarinventario;
     private javax.swing.JPanel Servicios;
     private javax.swing.JButton btnbuscar1;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -1179,9 +1183,6 @@ RegistroEquipos.setVisible(false);
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
@@ -1211,7 +1212,6 @@ RegistroEquipos.setVisible(false);
     private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
@@ -1220,7 +1220,6 @@ RegistroEquipos.setVisible(false);
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButton jRadioButton1;
@@ -1234,6 +1233,7 @@ RegistroEquipos.setVisible(false);
     private javax.swing.JTextArea jTextArea1;
     private com.toedter.calendar.JYearChooser jYearChooser1;
     private javax.swing.JTextField modelo;
+    private javax.swing.JPanel panelblancomenu;
     private javax.swing.JTable tabla;
     private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
