@@ -11,26 +11,24 @@ package model;
  */
 public class Inventario {
 
-    public static void remove(int Fila) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   
      private String RecibidoPor;
-     private String contactoCliente;
-    private String EntregadoPor;
-     private String NombreE;
-     private String modelo;
+     private String ContactoCliente;
+     private String EntregadoPor;
+     private String NombreEquipo;
+     private String Modelo;
      private String Estado;
-     private String DiagnosticoEquipo;
+     private String DiagnosticoEquipos;
     
 
-    public Inventario(String RecibidoPor, String contactoCliente, String EntregadoPor, String NombreE, String modelo, String Estado, String DiagnosticoEquipo) {
+    public Inventario(String RecibidoPor, String ContactoCliente, String EntregadoPor, String NombreE, String modelo, String Estado, String DiagnosticoEquipo) {
         this.RecibidoPor = RecibidoPor;
-        this.contactoCliente = contactoCliente;
+        this.ContactoCliente =ContactoCliente;
         this.EntregadoPor = EntregadoPor;
-        this.NombreE = NombreE;
-        this.modelo = modelo;
+        this.NombreEquipo = NombreE;
+        this.Modelo = modelo;
         this.Estado = Estado;
-        this.DiagnosticoEquipo = DiagnosticoEquipo;
+        this.DiagnosticoEquipos = DiagnosticoEquipo;
     }
 
 
@@ -39,10 +37,7 @@ public class Inventario {
     
     
     
-   public Inventario(){
-       
-       
-   }
+   
 
     public String getRecibidoPor() {
         return RecibidoPor;
@@ -53,11 +48,11 @@ public class Inventario {
     }
 
     public String getContactoCliente() {
-        return contactoCliente;
+        return ContactoCliente;
     }
 
     public void setContactoCliente(String contactoCliente) {
-        this.contactoCliente = contactoCliente;
+        this.ContactoCliente = contactoCliente;
     }
 
     public String getEntregadoPor() {
@@ -78,26 +73,26 @@ public class Inventario {
     }
 
     public String getDiagnosticoEquipo() {
-        return DiagnosticoEquipo;
+        return DiagnosticoEquipos;
     }
 
     public void setDiagnosticoEquipo(String DiagnosticoEquipo) {
-        this.DiagnosticoEquipo = DiagnosticoEquipo;
+        this.DiagnosticoEquipos = DiagnosticoEquipo;
     }
                 public String getNombreE() {
-        return NombreE;
+        return NombreEquipo;
     }
 
     public void setNombreE(String NombreE) {
-        this.NombreE = NombreE;
+        this.NombreEquipo = NombreE;
     }
 
     public String getModelo() {
-        return modelo;
+        return Modelo;
     }
 
     public void setModelo(String modelo) {
-        this.modelo = modelo;
+        this.Modelo = modelo;
     }
 }
 

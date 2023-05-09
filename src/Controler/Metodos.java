@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -145,13 +144,21 @@ public class Metodos {
         }
         return equipos;
     }
-
-    public int obtenerIntentos(String usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void incrementarIntentos(String usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+//public void eliminarFilaTabla(int fila, String nombreArchivo, String key) {
+//    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+//    modelo.removeRow(fila);
+//    eliminarElemento(key, fila, nombreArchivo);
+//}
+//
+//public void eliminarElemento(String key, int index, String nombreArchivo) {
+//    JSONArray jsonArray = ArrayJson(key, nombreArchivo);
+//    if (jsonArray != null) {
+//        jsonArray.remove(index);
+//        Escribir(ArrayJson key, nombreArchivo);
+//    }
 }
+
+    
+  
+
+  
