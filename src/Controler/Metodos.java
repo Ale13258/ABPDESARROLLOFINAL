@@ -86,8 +86,7 @@ public class Metodos {
         JSONArray array = null;
         try {
             JSONParser Parser = new JSONParser();
-            InputStream resourceStream = this.getClass().getResourceAsStream("/File/" + nombreFile + ".txt");
-            BufferedReader archivo = new BufferedReader(new InputStreamReader(resourceStream, "UTF-8"));
+            BufferedReader archivo = new BufferedReader(new FileReader("src/File/" + nombreFile + ".txt"));
             JSONObject pJsonObj = (JSONObject) Parser.parse(archivo);
             array = (JSONArray) pJsonObj.get(key);
         } catch (FileNotFoundException ex) {
@@ -133,20 +132,16 @@ public class Metodos {
 
     public List<Inventario> obtenerEquipos() {
         List<Inventario> equipos = new ArrayList<>();
-        JSONArray array = ArrayJson("Inventario", "Inventario");
-   
-        for (Object object : array) {
-            Gson gson = new Gson();
-            Inventario nuevo = gson.fromJson(object.toString(), Inventario.class);
-            
-            equipos.add(nuevo);
+        if (!leerArchivo("Inventario")) {
+            JSONArray array = ArrayJson("Inventario", "Inventario");
+            for (Object object : array) {
+                Gson gson = new Gson();
+                Inventario nuevo = gson.fromJson(object.toString(), Inventario.class);
+
+                equipos.add(nuevo);
+            }
         }
         return equipos;
     }
 
 }
-
-    
-  
-
-  
