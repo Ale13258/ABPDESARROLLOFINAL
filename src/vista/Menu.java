@@ -5,12 +5,21 @@
 package vista;
 
 import Controler.Metodos;
-import java.text.SimpleDateFormat;
+import com.google.gson.Gson;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Inventario;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -25,8 +34,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
-        CrearModelo();
-        cargarInformacion();
+        
 
         this.setLocationRelativeTo(null);
     }
@@ -64,17 +72,17 @@ public class Menu extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        NombreE = new javax.swing.JTextField();
-        contactoCliente = new javax.swing.JTextField();
+        NombreEquipo = new javax.swing.JTextField();
+        ContactoCliente = new javax.swing.JTextField();
         EntregadoPor = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        DiagnosticoEquipo = new javax.swing.JTextArea();
+        DiagnosticoEquipos = new javax.swing.JTextArea();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
-        modelo = new javax.swing.JTextField();
+        Modelo = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         BotonRegresarRegistroEquipos = new javax.swing.JButton();
         Servicios = new javax.swing.JPanel();
@@ -393,11 +401,11 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel10.setText("Diagnostico detallado del equipo");
 
-        NombreE.setBackground(new java.awt.Color(255, 250, 242));
-        NombreE.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        NombreEquipo.setBackground(new java.awt.Color(255, 250, 242));
+        NombreEquipo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        contactoCliente.setBackground(new java.awt.Color(255, 250, 242));
-        contactoCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ContactoCliente.setBackground(new java.awt.Color(255, 250, 242));
+        ContactoCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         EntregadoPor.setBackground(new java.awt.Color(255, 250, 242));
         EntregadoPor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -411,9 +419,9 @@ public class Menu extends javax.swing.JFrame {
         jRadioButton3.setBackground(new java.awt.Color(255, 0, 0));
         jRadioButton3.setText("Dañado");
 
-        DiagnosticoEquipo.setColumns(20);
-        DiagnosticoEquipo.setRows(5);
-        jScrollPane3.setViewportView(DiagnosticoEquipo);
+        DiagnosticoEquipos.setColumns(20);
+        DiagnosticoEquipos.setRows(5);
+        jScrollPane3.setViewportView(DiagnosticoEquipos);
 
         jButton10.setBackground(new java.awt.Color(102, 0, 102));
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
@@ -437,8 +445,8 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        modelo.setBackground(new java.awt.Color(255, 250, 242));
-        modelo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Modelo.setBackground(new java.awt.Color(255, 250, 242));
+        Modelo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel11.setText("Modelo");
 
@@ -477,10 +485,10 @@ public class Menu extends javax.swing.JFrame {
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel7)
                                     .addComponent(RecibidoPor, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
-                                    .addComponent(contactoCliente)
+                                    .addComponent(ContactoCliente)
                                     .addComponent(EntregadoPor)
-                                    .addComponent(NombreE)
-                                    .addComponent(modelo, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(NombreEquipo)
+                                    .addComponent(Modelo, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
@@ -526,7 +534,7 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(contactoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ContactoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -534,11 +542,11 @@ public class Menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(NombreE, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(NombreEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -975,19 +983,24 @@ public class Menu extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         Menu.setVisible(false);
         Inventario.setVisible(true);
+        CrearModelo();
+        cargarInformacion();
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         JSONObject equipo = new JSONObject();
         equipo.put("RecibidoPor", RecibidoPor.getText());
-        equipo.put("contactoCliente ", contactoCliente.getText());
-        equipo.put(" EntregadoPor", EntregadoPor.getText());
-        equipo.put("DiagnosticoEquipo ", DiagnosticoEquipo.getText());
-        equipo.put("NombreEquipo", NombreE.getText());
-        equipo.put("Modelo", modelo.getText());
+        equipo.put("ContactoCliente", ContactoCliente.getText());
+        equipo.put("EntregadoPor", EntregadoPor.getText());
+        equipo.put("DiagnosticoEquipos", DiagnosticoEquipos.getText());
+        equipo.put("NombreEquipo", NombreEquipo.getText());
+        equipo.put("Modelo", Modelo.getText());
 
         metodos.Escribir(equipo, "Inventario", "Inventario");
+        cargarInformacion();
+
+
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -996,12 +1009,12 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void BotonGenerarInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGenerarInformeActionPerformed
- JOptionPane.showMessageDialog(null, "En este momento se está generando un pdf con toda la informacion registrada " +  "!", " Aviso", JOptionPane.INFORMATION_MESSAGE);
-           
+        JOptionPane.showMessageDialog(null, "En este momento se está generando un pdf con toda la informacion registrada " + "!", " Aviso", JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_BotonGenerarInformeActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        Eliminar();        // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -1036,18 +1049,18 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_Guardar1ComponentHidden
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-    Servicios.setVisible(false);
+        Servicios.setVisible(false);
         Menu.setVisible(true);
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void BotonRegresarRegistroEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarRegistroEquiposActionPerformed
-RegistroEquipos.setVisible(false);
-        Menu.setVisible(true);       
+        RegistroEquipos.setVisible(false);
+        Menu.setVisible(true);
     }//GEN-LAST:event_BotonRegresarRegistroEquiposActionPerformed
 
     private void RegresarinventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarinventarioActionPerformed
-     Inventario.setVisible(false);
-        Menu.setVisible(true); 
+        Inventario.setVisible(false);
+        Menu.setVisible(true);
     }//GEN-LAST:event_RegresarinventarioActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
@@ -1066,10 +1079,10 @@ RegistroEquipos.setVisible(false);
             modelo6 = new DefaultTableModel();
             modelo6.addColumn("Recibe");
             modelo6.addColumn("Contacto");
-            modelo6.addColumn("Entregado");
+            modelo6.addColumn("EntregadoPor");
             modelo6.addColumn("Equipo");
             modelo6.addColumn("Modelo");
-            modelo6.addColumn("Estado");
+//            modelo6.addColumn("Estado");
             modelo6.addColumn("Diagnostico");
             tabla.setModel(modelo6);
         } catch (Exception e) {
@@ -1080,7 +1093,7 @@ RegistroEquipos.setVisible(false);
     public void cargarInformacion() {
 
         try {
-
+            modelo6.getDataVector().clear();//Limpia la tabla
 // Llamar al método Equipos() para obtener una lista de equipos
             List<model.Inventario> equiList = metodos.obtenerEquipos();
 //
@@ -1091,7 +1104,7 @@ RegistroEquipos.setVisible(false);
                 modelo6.setValueAt(equiList.get(x).getEntregadoPor(), x, 2);
                 modelo6.setValueAt(equiList.get(x).getNombreE(), x, 3);
                 modelo6.setValueAt(equiList.get(x).getModelo(), x, 4);
-                modelo6.setValueAt(equiList.get(x).getEstado(), x, 5);
+                modelo6.setValueAt(equiList.get(x).getDiagnosticoEquipo(), x, 5);
 
             }
 
@@ -1100,19 +1113,36 @@ RegistroEquipos.setVisible(false);
         }
     }
 
-    private void Eliminar() {
-        int Fila = tabla.getSelectedRow();
+    public void eliminarElemento(String key, int index, String nombreArchivo) {
         try {
-            if (Fila >= 0) {
-                modelo6.removeRow(Fila);
-                Inventario.remove(Fila);
-                JOptionPane.showMessageDialog(this, "SE HA ELIMINADO CORRECTAMENTE");
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Seleccione una fila");
+            // Leer el archivo JSON en una cadena de texto
+            InputStream resourceStream = this.getClass().getResourceAsStream("/File/" + nombreArchivo + ".txt");
+            BufferedReader archivo = new BufferedReader(new InputStreamReader(resourceStream, "UTF-8"));
+            StringBuilder contenidoArchivo = new StringBuilder();
+            String linea = null;
+            while ((linea = archivo.readLine()) != null) {
+                contenidoArchivo.append(linea);
             }
-        } catch (Exception e) {
+            archivo.close();
 
+            // Convertir la cadena de texto en un objeto JSON
+            JSONParser parser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) parser.parse(contenidoArchivo.toString());
+
+            // Obtener el array JSON correspondiente a la clave indicada
+            JSONArray jsonArray = (JSONArray) jsonObject.get(key);
+
+            // Eliminar el elemento del array
+            jsonArray.remove(index);
+
+            // Escribir el objeto JSON modificado en el archivo
+            FileWriter fileWriter = new FileWriter(this.getClass().getResource("/File/" + nombreArchivo + ".txt").getPath());
+            fileWriter.write(jsonObject.toJSONString());
+            fileWriter.flush();
+            fileWriter.close();
+
+        } catch (IOException | ParseException ex) {
+            System.out.println("Error al eliminar el elemento del archivo JSON: " + ex.getMessage());
         }
 
     }
@@ -1151,8 +1181,15 @@ RegistroEquipos.setVisible(false);
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Menu().setVisible(true);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
         });
     }
@@ -1162,14 +1199,16 @@ RegistroEquipos.setVisible(false);
     private javax.swing.JButton BotonGenerarInforme;
     private javax.swing.JButton BotonRegresarRegistroEquipos;
     private javax.swing.JPanel CalendarioA;
-    private javax.swing.JTextArea DiagnosticoEquipo;
+    private javax.swing.JTextField ContactoCliente;
+    private javax.swing.JTextArea DiagnosticoEquipos;
     private javax.swing.JTextField EntregadoPor;
     private javax.swing.JButton Guardar1;
     private javax.swing.JButton Guardar2;
     private javax.swing.JButton Guardar3;
     private javax.swing.JPanel Inventario;
     private javax.swing.JPanel Menu;
-    private javax.swing.JTextField NombreE;
+    private javax.swing.JTextField Modelo;
+    private javax.swing.JTextField NombreEquipo;
     private javax.swing.JPanel PanelBlancoFondo;
     private javax.swing.JTextField RecibidoPor;
     private javax.swing.JPanel RegistroEquipos;
@@ -1177,7 +1216,6 @@ RegistroEquipos.setVisible(false);
     private javax.swing.JPanel Servicios;
     private javax.swing.JButton btnbuscar1;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JTextField contactoCliente;
     private javax.swing.JButton eliminar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1232,9 +1270,9 @@ RegistroEquipos.setVisible(false);
     private com.toedter.components.JSpinField jSpinField1;
     private javax.swing.JTextArea jTextArea1;
     private com.toedter.calendar.JYearChooser jYearChooser1;
-    private javax.swing.JTextField modelo;
     private javax.swing.JPanel panelblancomenu;
     private javax.swing.JTable tabla;
     private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
+
 }
