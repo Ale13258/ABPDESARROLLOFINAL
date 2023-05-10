@@ -4,29 +4,25 @@
  */
 package vista;
 
-import Controler.Metodos;
-import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import Controler.Metodos;
-import java.text.SimpleDateFormat;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import model.Inventario;
 import org.json.simple.JSONObject;
+
 public class Menu extends javax.swing.JFrame {
 
     Metodos metodos = new Metodos();
@@ -38,26 +34,29 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         normalizar();
-        
+
         this.setLocationRelativeTo(null);
     }
-private void normalizar (){
-    Base.setSize(812, 535);
-    Menu.setBounds(0,0,812, 535);
-    Inventario.setBounds(0,0,812, 535);
-    CalendarioA.setBounds (0,0, 812, 535);
-     Servicios.setBounds (0,0, 812, 535);
-    RegistroEquipos.setBounds (0,0, 812, 535);
-    
-   actualizarBase(Menu);
-}
-private void actualizarBase(JPanel p){
-         Base.updateUI();
-         Base.removeAll();
-         Base.add(p);
-}
- @SuppressWarnings("unchecked")
- 
+
+    private void normalizar() {
+        Base.setSize(812, 535);
+        Menu.setBounds(0, 0, 812, 535);
+        Inventario.setBounds(0, 0, 812, 535);
+        CalendarioA.setBounds(0, 0, 812, 535);
+        Servicios.setBounds(0, 0, 812, 535);
+        RegistroEquipos.setBounds(0, 0, 812, 535);
+
+        actualizarBase(Menu);
+    }
+
+    private void actualizarBase(JPanel p) {
+        Base.updateUI();
+        Base.removeAll();
+        Base.add(p);
+    }
+
+    @SuppressWarnings("unchecked")
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -1041,13 +1040,14 @@ private void actualizarBase(JPanel p){
         equipo.put("Modelo", Modelo.getText());
 
         metodos.Escribir(equipo, "Inventario", "Inventario");
-        cargarInformacion();
 
+        CrearModelo();
+        cargarInformacion();
 
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-    actualizarBase(RegistroEquipos);
+        actualizarBase(RegistroEquipos);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void BotonGenerarInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGenerarInformeActionPerformed
@@ -1056,11 +1056,15 @@ private void actualizarBase(JPanel p){
     }//GEN-LAST:event_BotonGenerarInformeActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        // TODO add your handling code here:
+        try {
+            eliminarFilaTabla();      // TODO add your handling code here:
+        } catch (ParseException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-    actualizarBase(Inventario);
+        actualizarBase(Inventario);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void btnbuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscar1ActionPerformed
@@ -1068,7 +1072,7 @@ private void actualizarBase(JPanel p){
     }//GEN-LAST:event_btnbuscar1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-       actualizarBase(CalendarioA);
+        actualizarBase(CalendarioA);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -1096,15 +1100,15 @@ private void actualizarBase(JPanel p){
     }//GEN-LAST:event_BotonRegresarRegistroEquiposActionPerformed
 
     private void RegresarinventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarinventarioActionPerformed
-       actualizarBase(Menu);
+        actualizarBase(Menu);
     }//GEN-LAST:event_RegresarinventarioActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-      actualizarBase(Menu);
+        actualizarBase(Menu);
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void Guardar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar3ActionPerformed
-        // TODO add your handling code here:
+        actualizarBase(RegistroEquipos);
     }//GEN-LAST:event_Guardar3ActionPerformed
 
     private void Guardar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar4ActionPerformed
@@ -1130,12 +1134,9 @@ private void actualizarBase(JPanel p){
     }
 
     public void cargarInformacion() {
-
+        modelo6.getDataVector().clear();
         try {
-            modelo6.getDataVector().clear();//Limpia la tabla
-// Llamar al método Equipos() para obtener una lista de equipos
             List<model.Inventario> equiList = metodos.obtenerEquipos();
-//
             for (int x = 0; x < equiList.size(); x++) {
                 modelo6.insertRow(x, new Object[]{});
                 modelo6.setValueAt(equiList.get(x).getRecibidoPor(), x, 0);
@@ -1148,41 +1149,45 @@ private void actualizarBase(JPanel p){
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro al cargar Información de la Tabla Proveedores  " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Erro al cargar Información de la Tabla Inventario : " + e.toString());
         }
+
+    }
+    
+
+  
+private void eliminarFilaTabla() throws ParseException {
+    int filaSeleccionada = tabla.getSelectedRow();
+    if (filaSeleccionada >= 0) {
+        modelo6.removeRow(filaSeleccionada);
+        JSONArray inventario = null;
+        try {
+            JSONParser parser = new JSONParser();
+            BufferedReader archivo = new BufferedReader(new FileReader("src/File/Inventario.txt"));
+            JSONObject jsonObj = (JSONObject) parser.parse(archivo);
+            inventario = (JSONArray) jsonObj.get("Inventario");
+            inventario.remove(filaSeleccionada);
+            jsonObj.put("Inventario", inventario);
+            FileWriter file = new FileWriter("src/File/Inventario.txt");
+            file.write(jsonObj.toJSONString());
+            file.flush();
+//            file.close();
+            JOptionPane.showMessageDialog(null, "Fila eliminada correctamente");
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Archivo no encontrado");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Error al escribir en el archivo");
+//        } catch (ParseException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al analizar el archivo JSON");
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Selecciona una fila para eliminar");
     }
 
-    public void eliminarElemento(String key, int index, String nombreArchivo) {
-        try {
-            // Leer el archivo JSON en una cadena de texto
-            InputStream resourceStream = this.getClass().getResourceAsStream("/File/" + nombreArchivo + ".txt");
-            BufferedReader archivo = new BufferedReader(new InputStreamReader(resourceStream, "UTF-8"));
-            StringBuilder contenidoArchivo = new StringBuilder();
-            String linea = null;
-            while ((linea = archivo.readLine()) != null) {
-                contenidoArchivo.append(linea);
-            }
-            archivo.close();
 
-            // Convertir la cadena de texto en un objeto JSON
-            JSONParser parser = new JSONParser();
-            JSONObject jsonObject = (JSONObject) parser.parse(contenidoArchivo.toString());
 
-            // Obtener el array JSON correspondiente a la clave indicada
-            JSONArray jsonArray = (JSONArray) jsonObject.get(key);
-
-            // Eliminar el elemento del array
-            jsonArray.remove(index);
-
-            // Escribir el objeto JSON modificado en el archivo
-            FileWriter fileWriter = new FileWriter(this.getClass().getResource("/File/" + nombreArchivo + ".txt").getPath());
-            fileWriter.write(jsonObject.toJSONString());
-            fileWriter.flush();
-            fileWriter.close();
-
-        } catch (IOException | ParseException ex) {
-            System.out.println("Error al eliminar el elemento del archivo JSON: " + ex.getMessage());
-        }
+       
+        
 
     }
 

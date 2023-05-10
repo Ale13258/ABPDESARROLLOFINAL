@@ -1,1 +1,1 @@
-{"Inventario":[{"ContactoCliente":"123","NombreEquipo":"123","Modelo":"123","RecibidoPor":"123","EntregadoPor":"123","DiagnosticoEquipos":"123"},{"ContactoCliente":"12345","NombreEquipo":"hp123","Modelo":"123","RecibidoPor":"alfonso lopez","EntregadoPor":"sergio","DiagnosticoEquipos":"no prende y la pantalla esta negra ...."}]}
+{"Inventario":[]}
