@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import model.Usuario;
 import model.Inventario;
 import org.json.simple.JSONArray;
@@ -144,18 +143,7 @@ public class Metodos {
         }
         return equipos;
     }
-//public void eliminarFilaTabla(int fila, String nombreArchivo, String key) {
-//    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-//    modelo.removeRow(fila);
-//    eliminarElemento(key, fila, nombreArchivo);
-//}
-//
-//public void eliminarElemento(String key, int index, String nombreArchivo) {
-//    JSONArray jsonArray = ArrayJson(key, nombreArchivo);
-//    if (jsonArray != null) {
-//        jsonArray.remove(index);
-//        Escribir(ArrayJson key, nombreArchivo);
-//    }
+
 }
 
     

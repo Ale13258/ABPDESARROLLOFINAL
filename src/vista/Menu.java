@@ -20,26 +20,44 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-/**
- *
- * @author Wilme
- */
+import Controler.Metodos;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import model.Inventario;
+import org.json.simple.JSONObject;
 public class Menu extends javax.swing.JFrame {
 
     Metodos metodos = new Metodos();
+    private JPanel Login;
 
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
+        normalizar();
         
-
         this.setLocationRelativeTo(null);
     }
-
-    @SuppressWarnings("unchecked")
+private void normalizar (){
+    Base.setSize(812, 535);
+    Menu.setBounds(0,0,812, 535);
+    Inventario.setBounds(0,0,812, 535);
+    CalendarioA.setBounds (0,0, 812, 535);
+     Servicios.setBounds (0,0, 812, 535);
+    RegistroEquipos.setBounds (0,0, 812, 535);
+    
+   actualizarBase(Menu);
+}
+private void actualizarBase(JPanel p){
+         Base.updateUI();
+         Base.removeAll();
+         Base.add(p);
+}
+ @SuppressWarnings("unchecked")
+ 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -53,6 +71,7 @@ public class Menu extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        Guardar4 = new javax.swing.JButton();
         Inventario = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         txtbuscar = new javax.swing.JTextField();
@@ -210,6 +229,18 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        Guardar4.setBackground(new java.awt.Color(0, 0, 51));
+        Guardar4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Guardar4.setForeground(new java.awt.Color(255, 255, 255));
+        Guardar4.setText("Salir ");
+        Guardar4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Guardar4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Guardar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Guardar4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelblancomenuLayout = new javax.swing.GroupLayout(panelblancomenu);
         panelblancomenu.setLayout(panelblancomenuLayout);
         panelblancomenuLayout.setHorizontalGroup(
@@ -225,14 +256,21 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jButton8)
                 .addGap(54, 54, 54))
             .addGroup(panelblancomenuLayout.createSequentialGroup()
-                .addGap(254, 254, 254)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelblancomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelblancomenuLayout.createSequentialGroup()
+                        .addGap(254, 254, 254)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelblancomenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Guardar4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelblancomenuLayout.setVerticalGroup(
             panelblancomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelblancomenuLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addContainerGap()
+                .addComponent(Guardar4)
+                .addGap(39, 39, 39)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addGroup(panelblancomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -477,7 +515,8 @@ public class Menu extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jLabel11))
+                                .addComponent(jLabel11)
+                                .addGap(99, 99, 99))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel8)
@@ -490,19 +529,22 @@ public class Menu extends javax.swing.JFrame {
                                     .addComponent(NombreEquipo)
                                     .addComponent(Modelo, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel10)
-                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jRadioButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                                .addComponent(jRadioButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jRadioButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(28, 28, 28)
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addGap(0, 85, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                            .addGap(107, 107, 107)
+                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                            .addGap(99, 99, 99)
+                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel10)
+                                                .addComponent(jLabel9)))))))))
+                .addGap(0, 68, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(BotonRegresarRegistroEquipos)
@@ -511,23 +553,11 @@ public class Menu extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(BotonRegresarRegistroEquipos)
-                .addGap(32, 32, 32)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton3)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(BotonRegresarRegistroEquipos)
+                        .addGap(32, 32, 32)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
                         .addComponent(RecibidoPor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -542,12 +572,26 @@ public class Menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(NombreEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(NombreEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -981,8 +1025,7 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        Menu.setVisible(false);
-        Inventario.setVisible(true);
+        actualizarBase(Inventario);
         CrearModelo();
         cargarInformacion();
 
@@ -1004,8 +1047,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Menu.setVisible(false);
-        RegistroEquipos.setVisible(true);
+    actualizarBase(RegistroEquipos);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void BotonGenerarInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGenerarInformeActionPerformed
@@ -1018,8 +1060,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        RegistroEquipos.setVisible(true);
-        Inventario.setVisible(false);
+    actualizarBase(Inventario);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void btnbuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscar1ActionPerformed
@@ -1027,13 +1068,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnbuscar1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        Menu.setVisible(false);
-        CalendarioA.setVisible(true);
+       actualizarBase(CalendarioA);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        Menu.setVisible(false);
-        Servicios.setVisible(true);
+        actualizarBase(Servicios);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void Guardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar1ActionPerformed
@@ -1049,28 +1088,28 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_Guardar1ComponentHidden
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        Servicios.setVisible(false);
-        Menu.setVisible(true);
+        actualizarBase(Menu);
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void BotonRegresarRegistroEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarRegistroEquiposActionPerformed
-        RegistroEquipos.setVisible(false);
-        Menu.setVisible(true);
+        actualizarBase(Menu);
     }//GEN-LAST:event_BotonRegresarRegistroEquiposActionPerformed
 
     private void RegresarinventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarinventarioActionPerformed
-        Inventario.setVisible(false);
-        Menu.setVisible(true);
+       actualizarBase(Menu);
     }//GEN-LAST:event_RegresarinventarioActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        Inventario.setVisible(false);
-        Menu.setVisible(true);
+      actualizarBase(Menu);
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void Guardar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Guardar3ActionPerformed
+
+    private void Guardar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar4ActionPerformed
+        JOptionPane.showMessageDialog(null, " Gracias por confiar en Main Track ");
+    }//GEN-LAST:event_Guardar4ActionPerformed
 
     DefaultTableModel modelo6;
 
@@ -1205,6 +1244,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton Guardar1;
     private javax.swing.JButton Guardar2;
     private javax.swing.JButton Guardar3;
+    private javax.swing.JButton Guardar4;
     private javax.swing.JPanel Inventario;
     private javax.swing.JPanel Menu;
     private javax.swing.JTextField Modelo;
