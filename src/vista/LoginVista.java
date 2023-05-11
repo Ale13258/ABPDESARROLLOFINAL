@@ -420,8 +420,8 @@ public class LoginVista extends javax.swing.JFrame {
                 .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Constrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Ver, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                .addComponent(jButtonValidar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addComponent(jButtonValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
         );
 
@@ -528,7 +528,7 @@ if (metodos.Login(datos)) {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void ConstrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConstrasenaActionPerformed
-        // TODO add your handling code here:
+Constrasena.setEchoChar('\u0000');        // TODO add your handling code here:
     }//GEN-LAST:event_ConstrasenaActionPerformed
 
     private void VerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerMouseClicked
@@ -569,6 +569,11 @@ if (!Correo.getText().contains("@") || !Correo.getText().contains(".")) {
     usuario.put("contrasena", ConstrasenaString);
     metodos.Escribir(usuario, "Personas", "Usuarios");
     JOptionPane.showMessageDialog(null, "Los datos del usuario se han registrado correctamente");
+     Nombre.setText("");
+        Correo.setText("");
+        Usuario.setText("");
+        Constrasena.setText("");
+
       Login.setVisible(true);
         Registro.setVisible(false);
     
