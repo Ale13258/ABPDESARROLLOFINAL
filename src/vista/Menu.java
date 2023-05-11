@@ -32,7 +32,9 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu() {
+
         initComponents();
+
         normalizar();
 
         this.setLocationRelativeTo(null);
@@ -57,6 +59,10 @@ public class Menu extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
 
+    private void mostrartabla() {
+
+    }
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -75,7 +81,6 @@ public class Menu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         txtbuscar = new javax.swing.JTextField();
         btnbuscar1 = new javax.swing.JButton();
-        BotonGenerarInforme = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
@@ -88,14 +93,10 @@ public class Menu extends javax.swing.JFrame {
         RecibidoPor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         NombreEquipo = new javax.swing.JTextField();
         ContactoCliente = new javax.swing.JTextField();
         EntregadoPor = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         DiagnosticoEquipos = new javax.swing.JTextArea();
         jButton10 = new javax.swing.JButton();
@@ -260,28 +261,32 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(254, 254, 254)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelblancomenuLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(16, 16, 16)
                         .addComponent(Guardar4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelblancomenuLayout.setVerticalGroup(
             panelblancomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelblancomenuLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(Guardar4)
-                .addGap(39, 39, 39)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addGroup(panelblancomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelblancomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(84, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelblancomenuLayout.createSequentialGroup()
-                .addGap(16, 233, Short.MAX_VALUE)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(panelblancomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelblancomenuLayout.createSequentialGroup()
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelblancomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelblancomenuLayout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addGroup(panelblancomenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(panelblancomenuLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelblancomenuLayout.createSequentialGroup()
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         Menu.add(panelblancomenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 750, 480));
@@ -293,6 +298,11 @@ public class Menu extends javax.swing.JFrame {
         txtbuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtbuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtbuscar.setDisabledTextColor(new java.awt.Color(255, 204, 102));
+        txtbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbuscarActionPerformed(evt);
+            }
+        });
 
         btnbuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.jpg"))); // NOI18N
         btnbuscar1.setText("Buscar");
@@ -301,17 +311,6 @@ public class Menu extends javax.swing.JFrame {
         btnbuscar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbuscar1ActionPerformed(evt);
-            }
-        });
-
-        BotonGenerarInforme.setBackground(new java.awt.Color(0, 0, 51));
-        BotonGenerarInforme.setForeground(new java.awt.Color(255, 255, 255));
-        BotonGenerarInforme.setText("Generar Informe ");
-        BotonGenerarInforme.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BotonGenerarInforme.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonGenerarInforme.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonGenerarInformeActionPerformed(evt);
             }
         });
 
@@ -373,10 +372,8 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(127, 127, 127)
                         .addComponent(Guardar3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(93, 93, 93)
-                        .addComponent(BotonGenerarInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(195, 195, 195)
+                        .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(167, 167, 167)
                         .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -400,8 +397,7 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Guardar3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BotonGenerarInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Guardar3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
@@ -432,11 +428,9 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel7.setText("Entregado por:");
 
-        jLabel8.setText("Nombre Equipo");
+        jLabel8.setText("Nombre Equipo:");
 
-        jLabel9.setText("Estado");
-
-        jLabel10.setText("Diagnostico detallado del equipo");
+        jLabel10.setText("Diagnostico detallado del equipo:");
 
         NombreEquipo.setBackground(new java.awt.Color(255, 250, 242));
         NombreEquipo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -447,15 +441,7 @@ public class Menu extends javax.swing.JFrame {
         EntregadoPor.setBackground(new java.awt.Color(255, 250, 242));
         EntregadoPor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jRadioButton1.setBackground(new java.awt.Color(51, 255, 0));
-        jRadioButton1.setText("Buen Estado");
-
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 0));
-        jRadioButton2.setText("Advertencia");
-
-        jRadioButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jRadioButton3.setText("Dañado");
-
+        DiagnosticoEquipos.setBackground(new java.awt.Color(255, 250, 242));
         DiagnosticoEquipos.setColumns(20);
         DiagnosticoEquipos.setRows(5);
         jScrollPane3.setViewportView(DiagnosticoEquipos);
@@ -485,7 +471,7 @@ public class Menu extends javax.swing.JFrame {
         Modelo.setBackground(new java.awt.Color(255, 250, 242));
         Modelo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jLabel11.setText("Modelo");
+        jLabel11.setText("Modelo:");
 
         BotonRegresarRegistroEquipos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Regresar.jpg"))); // NOI18N
         BotonRegresarRegistroEquipos.setBorder(null);
@@ -503,47 +489,34 @@ public class Menu extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(272, 272, 272)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Modelo, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ContactoCliente)
+                    .addComponent(EntregadoPor)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(260, 260, 260)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel11)
-                                .addGap(99, 99, 99))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(RecibidoPor, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
-                                    .addComponent(ContactoCliente)
-                                    .addComponent(EntregadoPor)
-                                    .addComponent(NombreEquipo)
-                                    .addComponent(Modelo, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addGap(107, 107, 107)
-                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addGap(99, 99, 99)
-                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel10)
-                                                .addComponent(jLabel9)))))))))
-                .addGap(0, 68, Short.MAX_VALUE))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(RecibidoPor, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(NombreEquipo)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel11)))
+                .addGap(47, 47, 47)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(54, 54, 54))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(BotonRegresarRegistroEquipos)
@@ -552,13 +525,15 @@ public class Menu extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(BotonRegresarRegistroEquipos)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(BotonRegresarRegistroEquipos)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
                         .addComponent(RecibidoPor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
@@ -576,25 +551,14 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
+                        .addContainerGap(110, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61))
+                        .addComponent(jScrollPane3)
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46))))
         );
 
         javax.swing.GroupLayout RegistroEquiposLayout = new javax.swing.GroupLayout(RegistroEquipos);
@@ -1031,29 +995,40 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        JSONObject equipo = new JSONObject();
-        equipo.put("RecibidoPor", RecibidoPor.getText());
-        equipo.put("ContactoCliente", ContactoCliente.getText());
-        equipo.put("EntregadoPor", EntregadoPor.getText());
-        equipo.put("DiagnosticoEquipos", DiagnosticoEquipos.getText());
-        equipo.put("NombreEquipo", NombreEquipo.getText());
-        equipo.put("Modelo", Modelo.getText());
+        // Obtener los valores de los campos del formulario
+        String recibidoPor = RecibidoPor.getText();
+        String contactoCliente = ContactoCliente.getText();
+        String entregadoPor = EntregadoPor.getText();
+        String nombreEquipo = NombreEquipo.getText();
+        String modelo = Modelo.getText();
+        String diagnosticoEquipos = DiagnosticoEquipos.getText();
 
-        metodos.Escribir(equipo, "Inventario", "Inventario");
+// Validar que todos los campos estén llenos
+        if (recibidoPor.isEmpty() || contactoCliente.isEmpty() || entregadoPor.isEmpty() || nombreEquipo.isEmpty() || modelo.isEmpty() || diagnosticoEquipos.isEmpty()) {
+            // Mostrar una ventana emergente de advertencia
+            JOptionPane.showMessageDialog(null, "Por favor, llene todos los campos antes de continuar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            // Si todos los campos están llenos, crear el objeto JSON y guardar la información
+            JSONObject equipo = new JSONObject();
+            equipo.put("RecibidoPor", recibidoPor);
+            equipo.put("ContactoCliente", contactoCliente);
+            equipo.put("EntregadoPor", entregadoPor);
+            equipo.put("DiagnosticoEquipos", diagnosticoEquipos);
+            equipo.put("NombreEquipo", nombreEquipo);
+            equipo.put("Modelo", modelo);
 
-        CrearModelo();
-        cargarInformacion();
+            metodos.Escribir(equipo, "Inventario", "Inventario");
+
+            CrearModelo();
+            cargarInformacion();
+        }
+
 
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         actualizarBase(RegistroEquipos);
     }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void BotonGenerarInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGenerarInformeActionPerformed
-        JOptionPane.showMessageDialog(null, "En este momento se está generando un pdf con toda la informacion registrada " + "!", " Aviso", JOptionPane.INFORMATION_MESSAGE);
-
-    }//GEN-LAST:event_BotonGenerarInformeActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         try {
@@ -1068,7 +1043,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void btnbuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscar1ActionPerformed
-        // TODO add your handling code here:
+
+
     }//GEN-LAST:event_btnbuscar1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -1113,7 +1089,13 @@ public class Menu extends javax.swing.JFrame {
 
     private void Guardar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar4ActionPerformed
         JOptionPane.showMessageDialog(null, " Gracias por confiar en Main Track ");
+        dispose();
+        System.exit(0);
     }//GEN-LAST:event_Guardar4ActionPerformed
+
+    private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarActionPerformed
 
     DefaultTableModel modelo6;
 
@@ -1153,41 +1135,34 @@ public class Menu extends javax.swing.JFrame {
         }
 
     }
-    
 
-  
-private void eliminarFilaTabla() throws ParseException {
-    int filaSeleccionada = tabla.getSelectedRow();
-    if (filaSeleccionada >= 0) {
-        modelo6.removeRow(filaSeleccionada);
-        JSONArray inventario = null;
-        try {
-            JSONParser parser = new JSONParser();
-            BufferedReader archivo = new BufferedReader(new FileReader("src/File/Inventario.txt"));
-            JSONObject jsonObj = (JSONObject) parser.parse(archivo);
-            inventario = (JSONArray) jsonObj.get("Inventario");
-            inventario.remove(filaSeleccionada);
-            jsonObj.put("Inventario", inventario);
-            FileWriter file = new FileWriter("src/File/Inventario.txt");
-            file.write(jsonObj.toJSONString());
-            file.flush();
+    private void eliminarFilaTabla() throws ParseException {
+        int filaSeleccionada = tabla.getSelectedRow();
+        if (filaSeleccionada >= 0) {
+            modelo6.removeRow(filaSeleccionada);
+            JSONArray inventario = null;
+            try {
+                JSONParser parser = new JSONParser();
+                BufferedReader archivo = new BufferedReader(new FileReader("src/File/Inventario.txt"));
+                JSONObject jsonObj = (JSONObject) parser.parse(archivo);
+                inventario = (JSONArray) jsonObj.get("Inventario");
+                inventario.remove(filaSeleccionada);
+                jsonObj.put("Inventario", inventario);
+                FileWriter file = new FileWriter("src/File/Inventario.txt");
+                file.write(jsonObj.toJSONString());
+                file.flush();
 //            file.close();
-            JOptionPane.showMessageDialog(null, "Fila eliminada correctamente");
-        } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Archivo no encontrado");
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Error al escribir en el archivo");
+                JOptionPane.showMessageDialog(null, "Fila eliminada correctamente");
+            } catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Archivo no encontrado");
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error al escribir en el archivo");
 //        } catch (ParseException ex) {
 //            JOptionPane.showMessageDialog(null, "Error al analizar el archivo JSON");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecciona una fila para eliminar");
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "Selecciona una fila para eliminar");
-    }
-
-
-
-       
-        
 
     }
 
@@ -1240,7 +1215,6 @@ private void eliminarFilaTabla() throws ParseException {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Base;
-    private javax.swing.JButton BotonGenerarInforme;
     private javax.swing.JButton BotonRegresarRegistroEquipos;
     private javax.swing.JPanel CalendarioA;
     private javax.swing.JTextField ContactoCliente;
@@ -1291,7 +1265,6 @@ private void eliminarFilaTabla() throws ParseException {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -1305,9 +1278,6 @@ private void eliminarFilaTabla() throws ParseException {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
