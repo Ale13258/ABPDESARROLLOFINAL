@@ -1,8 +1,21 @@
 package vista;
 
 import Controler.Metodos;
+import com.sun.source.tree.BreakTree;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 import model.Usuario;
 import org.json.simple.JSONObject;
 
@@ -58,7 +71,7 @@ public class LoginVista extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         Constrasena = new javax.swing.JPasswordField();
         jButtonValidar = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        Ver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -316,6 +329,11 @@ public class LoginVista extends javax.swing.JFrame {
         Constrasena.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Constrasena.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Constrasena.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Constrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConstrasenaActionPerformed(evt);
+            }
+        });
 
         jButtonValidar.setBackground(new java.awt.Color(95, 15, 64));
         jButtonValidar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -323,17 +341,30 @@ public class LoginVista extends javax.swing.JFrame {
         jButtonValidar.setText("Validar");
         jButtonValidar.setBorder(null);
         jButtonValidar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonValidar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonValidarMouseClicked(evt);
+            }
+        });
         jButtonValidar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonValidarActionPerformed(evt);
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nover.jpg"))); // NOI18N
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        Ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nover.jpg"))); // NOI18N
+        Ver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Ver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VerMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                VerMouseEntered(evt);
+            }
+        });
+        Ver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6Ver(evt);
+                VerVer(evt);
             }
         });
 
@@ -357,7 +388,7 @@ public class LoginVista extends javax.swing.JFrame {
                                     .addGroup(RegistroLayout.createSequentialGroup()
                                         .addComponent(Constrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(Ver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -388,9 +419,9 @@ public class LoginVista extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Constrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                .addComponent(jButtonValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Ver, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addComponent(jButtonValidar)
                 .addGap(47, 47, 47))
         );
 
@@ -439,7 +470,7 @@ if (metodos.Login(datos)) {
     }//GEN-LAST:event_ocultoActionPerformed
 
     private void visibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visibleActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_visibleActionPerformed
 
     private void ContrasenaLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContrasenaLogin1ActionPerformed
@@ -472,9 +503,9 @@ if (metodos.Login(datos)) {
         // TODO add your handling code here:
     }//GEN-LAST:event_Ver
 
-    private void jButton6Ver(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6Ver
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6Ver
+    private void VerVer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerVer
+    
+    }//GEN-LAST:event_VerVer
 
     private void jButtonValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidarActionPerformed
         JSONObject usuario = new JSONObject();
@@ -485,6 +516,7 @@ if (metodos.Login(datos)) {
         String ConstrasenaString = String.valueOf(contraseñaChar);
         usuario.put("contrasena", ConstrasenaString);
         metodos.Escribir(usuario, "Personas", "Usuarios");
+     
     }//GEN-LAST:event_jButtonValidarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -495,6 +527,60 @@ if (metodos.Login(datos)) {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void ConstrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConstrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConstrasenaActionPerformed
+
+    private void VerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerMouseClicked
+  
+        JOptionPane.showMessageDialog(null, "La contraseña debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial");
+    
+   
+
+    }//GEN-LAST:event_VerMouseClicked
+
+    private void VerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerMouseEntered
+
+
+    }//GEN-LAST:event_VerMouseEntered
+
+    private void jButtonValidarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonValidarMouseClicked
+// Validar que todos los campos estén completos
+if (Nombre.getText().isEmpty() || Correo.getText().isEmpty() || Usuario.getText().isEmpty() || Constrasena.getPassword().length == 0) {
+    JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
+    
+    
+}
+        // Validar que el correo tenga un formato válido
+if (!Correo.getText().contains("@") || !Correo.getText().contains(".")) {
+    JOptionPane.showMessageDialog(null, "Por favor, ingrese un correo electrónico válido");
+
+
+
+            
+        } else {
+    // Todos los campos están completos, ingresar los datos del usuario al archivo JSON
+    JSONObject usuario = new JSONObject();
+    usuario.put("nombre", Nombre.getText());
+    usuario.put("correo", Correo.getText());
+    usuario.put("usuario", Usuario.getText());
+    char[] contraseñaChar = Constrasena.getPassword();
+    String ConstrasenaString = String.valueOf(contraseñaChar);
+    usuario.put("contrasena", ConstrasenaString);
+    metodos.Escribir(usuario, "Personas", "Usuarios");
+    JOptionPane.showMessageDialog(null, "Los datos del usuario se han registrado correctamente");
+      Login.setVisible(true);
+        Registro.setVisible(false);
+    
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonValidarMouseClicked
+    }    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -540,10 +626,10 @@ if (metodos.Login(datos)) {
     private javax.swing.JPanel Registro;
     private javax.swing.JTextField Usuario;
     private javax.swing.JTextField UsuarioLogin;
+    private javax.swing.JButton Ver;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonIngresar;
     private javax.swing.JButton jButtonLogin;
@@ -563,4 +649,8 @@ if (metodos.Login(datos)) {
     private javax.swing.JTextField oculto;
     private javax.swing.JPasswordField visible;
     // End of variables declaration//GEN-END:variables
+
+    private void actualizarbase(JPanel Login) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
