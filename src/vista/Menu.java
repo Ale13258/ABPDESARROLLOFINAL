@@ -21,6 +21,7 @@ import java.io.FileReader;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import org.json.simple.JSONObject;
 
 public class Menu extends javax.swing.JFrame {
@@ -73,13 +74,13 @@ public class Menu extends javax.swing.JFrame {
         Guardar4 = new javax.swing.JButton();
         Inventario = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        txtbuscar = new javax.swing.JTextField();
+        terminoBusqueda = new javax.swing.JTextField();
         btnbuscar1 = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         Regresarinventario = new javax.swing.JButton();
-        Guardar3 = new javax.swing.JButton();
+        Ingresar = new javax.swing.JButton();
         RegistroEquipos = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -283,14 +284,19 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtbuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtbuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtbuscar.setDisabledTextColor(new java.awt.Color(255, 204, 102));
+        terminoBusqueda.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        terminoBusqueda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        terminoBusqueda.setDisabledTextColor(new java.awt.Color(255, 204, 102));
 
         btnbuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.jpg"))); // NOI18N
         btnbuscar1.setText("Buscar");
         btnbuscar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnbuscar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnbuscar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnbuscar1MouseClicked(evt);
+            }
+        });
         btnbuscar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbuscar1ActionPerformed(evt);
@@ -329,14 +335,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        Guardar3.setBackground(new java.awt.Color(0, 0, 51));
-        Guardar3.setForeground(new java.awt.Color(255, 255, 255));
-        Guardar3.setText("Guardar");
-        Guardar3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Guardar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Guardar3.addActionListener(new java.awt.event.ActionListener() {
+        Ingresar.setBackground(new java.awt.Color(0, 0, 51));
+        Ingresar.setForeground(new java.awt.Color(255, 255, 255));
+        Ingresar.setText("Guardar");
+        Ingresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Guardar3ActionPerformed(evt);
+                IngresarActionPerformed(evt);
             }
         });
 
@@ -354,13 +360,13 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(Regresarinventario))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(167, 167, 167)
-                        .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(terminoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnbuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(58, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Guardar3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117)
                 .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(217, 217, 217))
@@ -376,12 +382,12 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(135, 135, 135)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnbuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(terminoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Guardar3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
@@ -1005,9 +1011,11 @@ public class Menu extends javax.swing.JFrame {
             equipo.put("Modelo", modelo);
 
             metodos.Escribir(equipo, "Inventario", "Inventario");
-
-            CrearModelo();
+               CrearModelo();
             cargarInformacion();
+     JOptionPane.showMessageDialog(null, " se guardo la informacion correctamente ");
+         
+//              actualizarBase(Inventario);
         }
 
     }//GEN-LAST:event_jButton11ActionPerformed
@@ -1068,9 +1076,9 @@ public class Menu extends javax.swing.JFrame {
         actualizarBase(Menu);
     }//GEN-LAST:event_jButton20ActionPerformed
 
-    private void Guardar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar3ActionPerformed
+    private void IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarActionPerformed
         actualizarBase(RegistroEquipos);
-    }//GEN-LAST:event_Guardar3ActionPerformed
+    }//GEN-LAST:event_IngresarActionPerformed
 
     private void Guardar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar4ActionPerformed
         dispose(); // Cierra el JFrame
@@ -1078,6 +1086,25 @@ public class Menu extends javax.swing.JFrame {
         System.exit(0); // Cierra el proyecto
     }//GEN-LAST:event_Guardar4ActionPerformed
 
+    private void btnbuscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnbuscar1MouseClicked
+        buscarEnTabla(); // TODO add your handling code here:
+    }//GEN-LAST:event_btnbuscar1MouseClicked
+public void buscarEnTabla() {
+    String terminoBusqueda = this.terminoBusqueda.getText();
+DefaultTableModel modeloTabla = (DefaultTableModel) tabla.getModel();
+TableRowSorter<DefaultTableModel> clasificador = new TableRowSorter<>(modeloTabla);
+tabla.setRowSorter(clasificador);
+clasificador.setRowFilter(RowFilter.regexFilter("(?i)" + terminoBusqueda));
+
+// Obtener la fila seleccionada y mostrar su índice en el modelo de tabla
+int filaSeleccionada = tabla.getSelectedRow();
+if (filaSeleccionada != -1) {
+    int filaModelo = clasificador.convertRowIndexToModel(filaSeleccionada);
+    System.out.println("Fila seleccionada en el modelo de tabla: " + filaModelo);
+}
+}
+    
+    
     DefaultTableModel modelo6;
 
     public void CrearModelo() {
@@ -1108,6 +1135,7 @@ public class Menu extends javax.swing.JFrame {
                 modelo6.setValueAt(equiList.get(x).getNombreE(), x, 3);
                 modelo6.setValueAt(equiList.get(x).getModelo(), x, 4);
                 modelo6.setValueAt(equiList.get(x).getDiagnosticoEquipo(), x, 5);
+                
 
             }
 
@@ -1203,8 +1231,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField EntregadoPor;
     private javax.swing.JButton Guardar1;
     private javax.swing.JButton Guardar2;
-    private javax.swing.JButton Guardar3;
     private javax.swing.JButton Guardar4;
+    private javax.swing.JButton Ingresar;
     private javax.swing.JPanel Inventario;
     private javax.swing.JPanel Menu;
     private javax.swing.JTextField Modelo;
@@ -1268,7 +1296,9 @@ public class Menu extends javax.swing.JFrame {
     private com.toedter.calendar.JYearChooser jYearChooser1;
     private javax.swing.JPanel panelblancomenu;
     private javax.swing.JTable tabla;
-    private javax.swing.JTextField txtbuscar;
+    private javax.swing.JTextField terminoBusqueda;
     // End of variables declaration//GEN-END:variables
+
+   
 
 }

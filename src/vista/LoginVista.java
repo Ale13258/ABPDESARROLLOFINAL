@@ -528,7 +528,7 @@ if (metodos.Login(datos)) {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void ConstrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConstrasenaActionPerformed
-Constrasena.setEchoChar('\u0000');        // TODO add your handling code here:
+     // TODO add your handling code here:
     }//GEN-LAST:event_ConstrasenaActionPerformed
 
     private void VerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerMouseClicked
