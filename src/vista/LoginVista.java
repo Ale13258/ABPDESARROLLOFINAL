@@ -1,34 +1,22 @@
 package vista;
 
 import Controler.Metodos;
-import com.sun.source.tree.BreakTree;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.MouseEvent;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 import model.Usuario;
 import org.json.simple.JSONObject;
 
 public class LoginVista extends javax.swing.JFrame {
 
-    public boolean ver = false;
+    public boolean ver = true;
 
     Metodos metodos = new Metodos();
 
     public LoginVista() {
         initComponents();
-        visible.setVisible(false);
-        oculto.setVisible(true);
+        visible.setVisible(true);
+        oculto.setVisible(false);
+
         this.setLocationRelativeTo(null);
     }
 
@@ -68,10 +56,11 @@ public class LoginVista extends javax.swing.JFrame {
         Usuario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         Constrasena = new javax.swing.JPasswordField();
+        jLabel10 = new javax.swing.JLabel();
         jButtonValidar = new javax.swing.JButton();
-        Ver = new javax.swing.JButton();
+        VisibleRegistro = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,11 +80,6 @@ public class LoginVista extends javax.swing.JFrame {
         jButtonRegistrar.setBorderPainted(false);
         jButtonRegistrar.setContentAreaFilled(false);
         jButtonRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonRegistrarMouseClicked(evt);
-            }
-        });
         jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRegistrarActionPerformed(evt);
@@ -227,6 +211,7 @@ public class LoginVista extends javax.swing.JFrame {
         Base.add(Login, "card2");
 
         Registro.setBackground(new java.awt.Color(255, 255, 255));
+        Registro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel9.setBackground(new java.awt.Color(0, 0, 51));
         jPanel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -300,40 +285,47 @@ public class LoginVista extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        Registro.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 540));
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Nombre Completo:");
+        Registro.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 72, -1, -1));
 
         Correo.setBackground(new java.awt.Color(220, 186, 255));
         Correo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Correo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Registro.add(Correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 176, 213, 33));
 
         Nombre.setBackground(new java.awt.Color(220, 186, 255));
         Nombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Nombre.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Registro.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 95, 213, 33));
 
         Usuario.setBackground(new java.awt.Color(220, 186, 255));
         Usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Usuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Registro.add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 253, 213, 33));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Correo:");
+        Registro.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 153, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Usuario:");
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("Contraseña:");
+        Registro.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
 
         Constrasena.setBackground(new java.awt.Color(220, 186, 255));
         Constrasena.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Constrasena.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Constrasena.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Constrasena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConstrasenaActionPerformed(evt);
-            }
-        });
+        Constrasena.setMinimumSize(new java.awt.Dimension(64, 20));
+        Constrasena.setPreferredSize(new java.awt.Dimension(64, 20));
+        Registro.add(Constrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 338, 213, 32));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setText("Contraseña:");
+        Registro.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 309, -1, -1));
 
         jButtonValidar.setBackground(new java.awt.Color(95, 15, 64));
         jButtonValidar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -351,79 +343,20 @@ public class LoginVista extends javax.swing.JFrame {
                 jButtonValidarActionPerformed(evt);
             }
         });
+        Registro.add(jButtonValidar, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 459, 160, 34));
 
-        Ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nover.jpg"))); // NOI18N
-        Ver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Ver.addMouseListener(new java.awt.event.MouseAdapter() {
+        VisibleRegistro.setBackground(new java.awt.Color(220, 186, 255));
+        VisibleRegistro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        VisibleRegistro.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Registro.add(VisibleRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 338, 213, 32));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nover.jpg"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                VerMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                VerMouseEntered(evt);
+                jLabel3MouseClicked(evt);
             }
         });
-        Ver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VerVer(evt);
-            }
-        });
-
-        javax.swing.GroupLayout RegistroLayout = new javax.swing.GroupLayout(Registro);
-        Registro.setLayout(RegistroLayout);
-        RegistroLayout.setHorizontalGroup(
-            RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RegistroLayout.createSequentialGroup()
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(RegistroLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addGroup(RegistroLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(RegistroLayout.createSequentialGroup()
-                                        .addComponent(Constrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Ver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 28, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistroLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90))))
-        );
-        RegistroLayout.setVerticalGroup(
-            RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(RegistroLayout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(jLabel10)
-                .addGap(7, 7, 7)
-                .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Constrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Ver, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addComponent(jButtonValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
-        );
+        Registro.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(629, 338, -1, -1));
 
         Base.add(Registro, "card4");
 
@@ -431,7 +364,7 @@ public class LoginVista extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Base, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Base, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,28 +375,27 @@ public class LoginVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-      Usuario datos = new Usuario();
-datos.usuario = UsuarioLogin.getText();
-datos.contrasena = oculto.getText();
+        Usuario datos = new Usuario();
+        datos.usuario = UsuarioLogin.getText();
+        char[] contraseñaChar = visible.getPassword();
+        String ConstrasenaString = String.valueOf(contraseñaChar);
+        datos.contrasena = ConstrasenaString;
 
-if (metodos.Login(datos)) {
-    JOptionPane.showMessageDialog(null, "¡Bienvenido " + datos.usuario + "!", "Inicio de sesión exitoso", JOptionPane.INFORMATION_MESSAGE);
-    this.dispose();
-} else {
-    JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
-}
-        
+        if (metodos.Login(datos)) {
+            JOptionPane.showMessageDialog(null, "¡Bienvenido " + datos.usuario + "!", "Inicio de sesión exitoso", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña Incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void jButtonIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresarMouseClicked
+        ver = true;
         Registro.setVisible(false);
         Login.setVisible(true);
     }//GEN-LAST:event_jButtonIngresarMouseClicked
-
-    private void jButtonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistrarMouseClicked
-
-    }//GEN-LAST:event_jButtonRegistrarMouseClicked
 
     private void ocultoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ocultoActionPerformed
         // TODO add your handling code here:
@@ -482,15 +414,21 @@ if (metodos.Login(datos)) {
     }//GEN-LAST:event_UsuarioLoginActionPerformed
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
+        ver = true;
         Registro.setVisible(true);
         Login.setVisible(false);
+        VisibleRegistro.setVisible(false);
+
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
+    @SuppressWarnings("deprecation")
     private void Ver(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver
         if (ver) {
             oculto.setVisible(true);
             visible.setVisible(false);
-            oculto.setText(visible.getText());
+            char[] contraseñaChar = visible.getPassword();
+            String ConstrasenaString = String.valueOf(contraseñaChar);
+            oculto.setText(ConstrasenaString);
             ver = false;
 
         } else {
@@ -500,13 +438,9 @@ if (metodos.Login(datos)) {
             ver = true;
         }
 
-        // TODO add your handling code here:
     }//GEN-LAST:event_Ver
 
-    private void VerVer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerVer
-    
-    }//GEN-LAST:event_VerVer
-
+    @SuppressWarnings("unchecked")
     private void jButtonValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidarActionPerformed
         JSONObject usuario = new JSONObject();
         usuario.put("nombre", Nombre.getText());
@@ -516,7 +450,7 @@ if (metodos.Login(datos)) {
         String ConstrasenaString = String.valueOf(contraseñaChar);
         usuario.put("contrasena", ConstrasenaString);
         metodos.Escribir(usuario, "Personas", "Usuarios");
-     
+
     }//GEN-LAST:event_jButtonValidarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -527,99 +461,55 @@ if (metodos.Login(datos)) {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void ConstrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConstrasenaActionPerformed
-     // TODO add your handling code here:
-    }//GEN-LAST:event_ConstrasenaActionPerformed
-
-    private void VerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerMouseClicked
-  
-        JOptionPane.showMessageDialog(null, "La contraseña debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial");
-    
-   
-
-    }//GEN-LAST:event_VerMouseClicked
-
-    private void VerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerMouseEntered
-
-
-    }//GEN-LAST:event_VerMouseEntered
-
+    @SuppressWarnings("unchecked")
     private void jButtonValidarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonValidarMouseClicked
 // Validar que todos los campos estén completos
-if (Nombre.getText().isEmpty() || Correo.getText().isEmpty() || Usuario.getText().isEmpty() || Constrasena.getPassword().length == 0) {
-    JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
-    
-    
-}
+        if (Nombre.getText().isEmpty() || Correo.getText().isEmpty() || Usuario.getText().isEmpty() || Constrasena.getPassword().length == 0) {
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
+
+        }
         // Validar que el correo tenga un formato válido
-if (!Correo.getText().contains("@") || !Correo.getText().contains(".")) {
-    JOptionPane.showMessageDialog(null, "Por favor, ingrese un correo electrónico válido");
+        if (!Correo.getText().contains("@") || !Correo.getText().contains(".")) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese un correo electrónico válido");
 
-
-
-            
         } else {
-    // Todos los campos están completos, ingresar los datos del usuario al archivo JSON
-    JSONObject usuario = new JSONObject();
-    usuario.put("nombre", Nombre.getText());
-    usuario.put("correo", Correo.getText());
-    usuario.put("usuario", Usuario.getText());
-    char[] contraseñaChar = Constrasena.getPassword();
-    String ConstrasenaString = String.valueOf(contraseñaChar);
-    usuario.put("contrasena", ConstrasenaString);
-    metodos.Escribir(usuario, "Personas", "Usuarios");
-    JOptionPane.showMessageDialog(null, "Los datos del usuario se han registrado correctamente");
-     Nombre.setText("");
-        Correo.setText("");
-        Usuario.setText("");
-        Constrasena.setText("");
+            // Todos los campos están completos, ingresar los datos del usuario al archivo JSON
+            JSONObject usuario = new JSONObject();
+            usuario.put("nombre", Nombre.getText());
+            usuario.put("correo", Correo.getText());
+            usuario.put("usuario", Usuario.getText());
+            char[] contraseñaChar = Constrasena.getPassword();
+            String ConstrasenaString = String.valueOf(contraseñaChar);
+            usuario.put("contrasena", ConstrasenaString);
+            metodos.Escribir(usuario, "Personas", "Usuarios");
+            JOptionPane.showMessageDialog(null, "Los datos del usuario se han registrado correctamente");
+            Nombre.setText("");
+            Correo.setText("");
+            Usuario.setText("");
+            Constrasena.setText("");
 
-      Login.setVisible(true);
-        Registro.setVisible(false);
-    
-
-
-
+            Login.setVisible(true);
+            Registro.setVisible(false);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonValidarMouseClicked
-    }    
-    
-    
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginVista().setVisible(true);
-            }
-        });
-    }
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        if (ver) {
+            VisibleRegistro.setVisible(true);
+            Constrasena.setVisible(false);
+            char[] contraseñaChar = Constrasena.getPassword();
+            String ConstrasenaString = String.valueOf(contraseñaChar);
+            VisibleRegistro.setText(ConstrasenaString);
+            ver = false;
+
+        } else {
+            VisibleRegistro.setVisible(false);
+            Constrasena.setVisible(true);
+            Constrasena.setText(VisibleRegistro.getText());
+            ver = true;
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Base;
@@ -631,7 +521,7 @@ if (!Correo.getText().contains("@") || !Correo.getText().contains(".")) {
     private javax.swing.JPanel Registro;
     private javax.swing.JTextField Usuario;
     private javax.swing.JTextField UsuarioLogin;
-    private javax.swing.JButton Ver;
+    private javax.swing.JTextField VisibleRegistro;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -643,6 +533,7 @@ if (!Correo.getText().contains("@") || !Correo.getText().contains(".")) {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

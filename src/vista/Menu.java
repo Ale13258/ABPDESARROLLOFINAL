@@ -1,14 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vista;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,8 +21,6 @@ import org.json.simple.JSONObject;
 public class Menu extends javax.swing.JFrame {
 
     Metodos metodos = new Metodos();
-    private JPanel Login;
-
     /**
      * Creates new form Menu
      */
@@ -292,11 +284,6 @@ public class Menu extends javax.swing.JFrame {
         btnbuscar1.setText("Buscar");
         btnbuscar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnbuscar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnbuscar1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnbuscar1MouseClicked(evt);
-            }
-        });
         btnbuscar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbuscar1ActionPerformed(evt);
@@ -319,7 +306,7 @@ public class Menu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+
             }
         ));
         jScrollPane2.setViewportView(tabla);
@@ -408,19 +395,19 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel5.setText("Recibido Por: ");
+        jLabel5.setText("Recibido Por*: ");
 
-        jLabel6.setText("Contacto Cliente:");
+        jLabel6.setText("Contacto Cliente*:");
 
         RecibidoPor.setBackground(new java.awt.Color(255, 250, 242));
         RecibidoPor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         RecibidoPor.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        jLabel7.setText("Entregado por:");
+        jLabel7.setText("Entregado por*:");
 
-        jLabel8.setText("Nombre Equipo:");
+        jLabel8.setText("Nombre Equipo*:");
 
-        jLabel10.setText("Diagnostico detallado del equipo:");
+        jLabel10.setText("Diagnostico detallado del equipo*:");
 
         NombreEquipo.setBackground(new java.awt.Color(255, 250, 242));
         NombreEquipo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -461,7 +448,7 @@ public class Menu extends javax.swing.JFrame {
         Modelo.setBackground(new java.awt.Color(255, 250, 242));
         Modelo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jLabel11.setText("Modelo:");
+        jLabel11.setText("Modelo*:");
 
         BotonRegresarRegistroEquipos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Regresar.jpg"))); // NOI18N
         BotonRegresarRegistroEquipos.setBorder(null);
@@ -987,6 +974,7 @@ public class Menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    @SuppressWarnings("unchecked")
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // Obtener los valores de los campos del formulario
         String recibidoPor = RecibidoPor.getText();
@@ -1011,10 +999,10 @@ public class Menu extends javax.swing.JFrame {
             equipo.put("Modelo", modelo);
 
             metodos.Escribir(equipo, "Inventario", "Inventario");
-               CrearModelo();
+            CrearModelo();
             cargarInformacion();
-     JOptionPane.showMessageDialog(null, " se guardo la informacion correctamente ");
-         
+            JOptionPane.showMessageDialog(null, " se guardo la informacion correctamente ");
+
 //              actualizarBase(Inventario);
         }
 
@@ -1037,7 +1025,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void btnbuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscar1ActionPerformed
-        // TODO add your handling code here:
+         buscarEnTabla();
     }//GEN-LAST:event_btnbuscar1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -1085,26 +1073,21 @@ public class Menu extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, " Gracias por confiar en Main Track ");
         System.exit(0); // Cierra el proyecto
     }//GEN-LAST:event_Guardar4ActionPerformed
-
-    private void btnbuscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnbuscar1MouseClicked
-        buscarEnTabla(); // TODO add your handling code here:
-    }//GEN-LAST:event_btnbuscar1MouseClicked
-public void buscarEnTabla() {
-    String terminoBusqueda = this.terminoBusqueda.getText();
-DefaultTableModel modeloTabla = (DefaultTableModel) tabla.getModel();
-TableRowSorter<DefaultTableModel> clasificador = new TableRowSorter<>(modeloTabla);
-tabla.setRowSorter(clasificador);
-clasificador.setRowFilter(RowFilter.regexFilter("(?i)" + terminoBusqueda));
+    public void buscarEnTabla() {
+        String terminoBusqueda = this.terminoBusqueda.getText();
+        DefaultTableModel modeloTabla = (DefaultTableModel) tabla.getModel();
+        TableRowSorter<DefaultTableModel> clasificador = new TableRowSorter<>(modeloTabla);
+        tabla.setRowSorter(clasificador);
+        clasificador.setRowFilter(RowFilter.regexFilter("(?i)" + terminoBusqueda));
 
 // Obtener la fila seleccionada y mostrar su índice en el modelo de tabla
-int filaSeleccionada = tabla.getSelectedRow();
-if (filaSeleccionada != -1) {
-    int filaModelo = clasificador.convertRowIndexToModel(filaSeleccionada);
-    System.out.println("Fila seleccionada en el modelo de tabla: " + filaModelo);
-}
-}
-    
-    
+        int filaSeleccionada = tabla.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            int filaModelo = clasificador.convertRowIndexToModel(filaSeleccionada);
+            System.out.println("Fila seleccionada en el modelo de tabla: " + filaModelo);
+        }
+    }
+
     DefaultTableModel modelo6;
 
     public void CrearModelo() {
@@ -1135,7 +1118,6 @@ if (filaSeleccionada != -1) {
                 modelo6.setValueAt(equiList.get(x).getNombreE(), x, 3);
                 modelo6.setValueAt(equiList.get(x).getModelo(), x, 4);
                 modelo6.setValueAt(equiList.get(x).getDiagnosticoEquipo(), x, 5);
-                
 
             }
 
@@ -1145,6 +1127,7 @@ if (filaSeleccionada != -1) {
 
     }
 
+    @SuppressWarnings("unchecked")
     private void eliminarFilaTabla() throws ParseException {
         int filaSeleccionada = tabla.getSelectedRow();
         if (filaSeleccionada >= 0) {
@@ -1175,52 +1158,6 @@ if (filaSeleccionada != -1) {
 
     }
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Menu().setVisible(true);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Base;
@@ -1298,7 +1235,5 @@ if (filaSeleccionada != -1) {
     private javax.swing.JTable tabla;
     private javax.swing.JTextField terminoBusqueda;
     // End of variables declaration//GEN-END:variables
-
-   
 
 }
