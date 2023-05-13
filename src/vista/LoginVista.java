@@ -60,7 +60,6 @@ public class LoginVista extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jButtonValidar = new javax.swing.JButton();
         VisibleRegistro = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,7 +115,7 @@ public class LoginVista extends javax.swing.JFrame {
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 120, 50));
 
-        Login.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 350, 540));
+        Login.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 350, 540));
 
         jButtonLogin.setBackground(new java.awt.Color(95, 15, 64));
         jButtonLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -350,21 +349,13 @@ public class LoginVista extends javax.swing.JFrame {
         VisibleRegistro.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Registro.add(VisibleRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 338, 213, 32));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nover.jpg"))); // NOI18N
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-        Registro.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(629, 338, -1, -1));
-
         Base.add(Registro, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Base, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(Base, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,23 +485,6 @@ public class LoginVista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonValidarMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        if (ver) {
-            VisibleRegistro.setVisible(true);
-            Constrasena.setVisible(false);
-            char[] contraseñaChar = Constrasena.getPassword();
-            String ConstrasenaString = String.valueOf(contraseñaChar);
-            VisibleRegistro.setText(ConstrasenaString);
-            ver = false;
-
-        } else {
-            VisibleRegistro.setVisible(false);
-            Constrasena.setVisible(true);
-            Constrasena.setText(VisibleRegistro.getText());
-            ver = true;
-        }
-    }//GEN-LAST:event_jLabel3MouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Base;
     private javax.swing.JPasswordField Constrasena;
@@ -533,7 +507,6 @@ public class LoginVista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
