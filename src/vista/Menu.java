@@ -316,7 +316,7 @@ public class Menu extends javax.swing.JFrame {
 
         Ingresar.setBackground(new java.awt.Color(0, 0, 51));
         Ingresar.setForeground(new java.awt.Color(255, 255, 255));
-        Ingresar.setText("Guardar");
+        Ingresar.setText("Agregar");
         Ingresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Ingresar.addActionListener(new java.awt.event.ActionListener() {
@@ -934,6 +934,7 @@ public class Menu extends javax.swing.JFrame {
             CrearModelo();
             cargarInformacion();
             JOptionPane.showMessageDialog(null, " se guardo la informacion correctamente ");
+            actualizarBase(Inventario);
 
 //              actualizarBase(Inventario);
         }
